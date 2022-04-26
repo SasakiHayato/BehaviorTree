@@ -8,7 +8,7 @@ public class User : MonoBehaviour
 
     void Start()
     {
-        _tree.Run();
+        //_tree.Run();
     }
 
 }

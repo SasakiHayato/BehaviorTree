@@ -9,7 +9,7 @@ namespace BehaviourTree
 
     public partial class TreeManager : MonoBehaviour
     {
-        public enum BrockType
+        public enum BlockType
         {
             Sequence,
             Selector,
@@ -38,7 +38,7 @@ namespace BehaviourTree
         [System.Serializable]
         public class BranchData
         {
-            public BrockType BrockType;
+            public BlockType BrockType;
             public ConditionalType Condition;
             public int Priority;
             public int ID { get; set; }

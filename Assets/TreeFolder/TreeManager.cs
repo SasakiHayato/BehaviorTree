@@ -56,8 +56,8 @@ namespace BehaviourTree
                 branch.ID = id;
                 id++;
 
-                if (branch.BrockType == BrockType.ConditionallySelector 
-                || branch.BrockType == BrockType.ConditionallySequence)
+                if (branch.BrockType == BlockType.ConditionallySelector 
+                || branch.BrockType == BlockType.ConditionallySequence)
                     ConditionallyBranches.Add(branch);
                 else
                     NormalBranches.Add(branch);
@@ -191,8 +191,8 @@ namespace BehaviourTree
             QueueData queueData = null;
 
             //　ブロックの取得
-            if (branch.BrockType == BrockType.Sequence
-            || branch.BrockType == BrockType.ConditionallySequence)
+            if (branch.BrockType == BlockType.Sequence
+            || branch.BrockType == BlockType.ConditionallySequence)
             {
                 blockData = _sequenceNode.SetBrockData(branch.BrockDatas);
             }

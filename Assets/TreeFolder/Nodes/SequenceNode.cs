@@ -47,7 +47,7 @@ namespace BehaviourTree
             /// <returns>ç∑ÇµçûÇﬂÇΩÇ©î€Ç©</returns>
             public bool SetNextBrockData(BranchData branch)
             {
-                if (branch.BrockType == BrockType.ConditionallySelector)
+                if (branch.BrockType == BlockType.ConditionallySelector)
                 {
                     _blockID = 0;
                     return false;

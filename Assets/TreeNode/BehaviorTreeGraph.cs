@@ -9,12 +9,12 @@ using GraphProcessor;
 [CreateAssetMenu (menuName = "BehaviorTreeGraph")]
 public class BehaviorTreeGraph : BaseGraph
 {
-    public void Run()
-    {
-        var process = new BehaviorTreeGraphProcesser(this);
-        process.Run();
-        Debug.Log(process.Result);
-    }
+    //public void Run()
+    //{
+    //    var process = new BehaviorTreeGraphProcesser(this);
+    //    process.Run();
+    //    Debug.Log(process.Result);
+    //}
 
     [OnOpenAsset(0)]
     public static bool OnBaseGraphOpened(int instanceID, int line)
@@ -29,6 +29,7 @@ public class BehaviorTreeGraph : BaseGraph
         return true;
     }
 
+    //Å@äJÇ¢ÇΩç€Ç…ResultNodeÇ™Ç»ÇØÇÍÇŒí«â¡
     protected override void OnEnable()
     {
         base.OnEnable();
