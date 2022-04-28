@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedNodes: []
   nodes:
-  - rid: 212149167364505601
+  - rid: 212149210699530242
   edges: []
   groups: []
   stackNodes: []
@@ -23,23 +23,24 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: -48, y: 22.4, z: 0}
-  scale: {x: 1, y: 1, z: 1}
+  position: {x: 48.8, y: 225.6, z: 0}
+  scale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
     RefIds:
-    - rid: 212149167364505601
-      type: {class: ReapterNode, ns: BehaviourTree.TreeEditor, asm: Assembly-CSharp-Editor}
+    - rid: 212149210699530242
+      type: {class: ReapterNode, ns: BehaviorTreeEditor, asm: Assembly-CSharp-Editor}
       data:
         nodeCustomName: 
-        GUID: 400e1db1-c1d4-4fdb-b05e-959e78089959
+        GUID: 82ddeafe-e6e7-4041-9aa5-1c9ef977e57d
         computeOrder: 0
         position:
           serializedVersion: 2
-          x: 154.19199
-          y: 61.423996
-          width: 118.399994
-          height: 75.200005
+          x: 0
+          y: 0
+          width: 100
+          height: 100
         expanded: 0
         debug: 0
         nodeLock: 0
+        _user: {fileID: 0}

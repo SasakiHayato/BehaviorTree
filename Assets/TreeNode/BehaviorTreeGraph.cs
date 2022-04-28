@@ -29,16 +29,16 @@ public class BehaviorTreeGraph : BaseGraph
         return true;
     }
 
-    //　開いた際にResultNodeがなければ追加
-    protected override void OnEnable()
-    {
-        base.OnEnable();
+    ////　開いた際にResultNodeがなければ追加
+    //protected override void OnEnable()
+    //{
+    //    base.OnEnable();
 
-        if (!nodes.Any(n => n is ResultNode))
-        {
-            AddNode(BaseNode.CreateFromType<ResultNode>(Vector2.zero));
-        }
-    }
+    //    if (!nodes.Any(n => n is ResultNode))
+    //    {
+    //        AddNode(BaseNode.CreateFromType<ResultNode>(Vector2.zero));
+    //    }
+    //}
 }
 
 #endif

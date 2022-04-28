@@ -7,25 +7,22 @@ using UnityEngine.Assertions;
 /// Windowの生成
 /// </summary>
 
-namespace BehaviourTree
+namespace BehaviorTreeEditor
 {
-    namespace TreeEditor
+    public class TreeGraphWindow : BaseGraphWindow
     {
-        public class TreeGraphWindow : BaseGraphWindow
+        const string FileName = "BehaviorTreeWindow";
+
+        protected override void InitializeWindow(BaseGraph graph)
         {
-            const string FileName = "BehaviorTreeWindow";
+            Assert.IsNotNull(graph, "BaseGraph is Null");
 
-            protected override void InitializeWindow(BaseGraph graph)
-            {
-                Assert.IsNotNull(graph, "BaseGraph is Null");
+            // Windowのタイトル設定
+            titleContent = new GUIContent(ObjectNames.NicifyVariableName(FileName));
 
-                // Windowのタイトル設定
-                titleContent = new GUIContent(ObjectNames.NicifyVariableName(FileName));
+            if (graphView == null) graphView = new BehaviorTreeGraphView(this);
 
-                if (graphView == null) graphView = new BehaviorTreeGraphView(this);
-
-                rootView.Add(graphView);
-            }
+            rootView.Add(graphView);
         }
     }
 }
