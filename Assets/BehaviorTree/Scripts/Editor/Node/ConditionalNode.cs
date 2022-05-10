@@ -9,7 +9,7 @@ namespace BehaviorTree
     {
         [Output("Send")] BaseNode _node;
 
-        [SerializeField] NodeData.ConditionalData _conditionalData;
+        [SerializeField] Data.Conditional _conditionalData;
 
         protected override void Process()
         {

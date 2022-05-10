@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace BehaviorTree
 {
-    namespace NodeData
+    namespace Data
     {
         [CreateAssetMenu (fileName = "ConditionalData")]
-        public class ConditionalData : ScriptableObject
+        public class Conditional : ScriptableObject
         {
             public ConditionalType Type;
 

@@ -14,7 +14,7 @@ namespace BehaviorTreeEditor
 
         protected override void Process()
         {
-            //_user.AddComponent<TreeUser>();
+            
         }
     }
 }

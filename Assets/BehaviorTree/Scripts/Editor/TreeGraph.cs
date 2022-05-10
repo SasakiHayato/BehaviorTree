@@ -12,7 +12,7 @@ namespace BehaviorTreeEditor
     /// BehaviorTreeのデータクラス
     /// </summary>
 
-    [CreateAssetMenu(menuName = "NewBehaviorTreeGraph")]
+    [CreateAssetMenu(menuName = "BehaviorTreeGraph")]
     public class TreeGraph : BaseGraph
     {
         // ダブルクリックでWindowを開くようにする
