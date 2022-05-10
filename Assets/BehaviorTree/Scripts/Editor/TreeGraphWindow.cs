@@ -20,7 +20,7 @@ namespace BehaviorTreeEditor
             // WindowÇÃÉ^ÉCÉgÉãê›íË
             titleContent = new GUIContent(ObjectNames.NicifyVariableName(FileName));
 
-            if (graphView == null) graphView = new BehaviorTreeGraphView(this);
+            if (graphView == null) graphView = new TreeGraphView(this);
 
             rootView.Add(graphView);
         }
