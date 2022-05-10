@@ -1,8 +1,7 @@
 using GraphProcessor;
 using System.Linq;
-using BehaviourTree;
 
-namespace BehaviorTreeEditor
+namespace BehaviorTree
 {
     public class TreeGraphExecutor : BaseGraphProcessor
     {

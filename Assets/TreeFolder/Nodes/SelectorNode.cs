@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BehaviourTree
+namespace BehaviorTree
 {
     /// <summary>
     /// or‚É‘Š“–‚·‚é

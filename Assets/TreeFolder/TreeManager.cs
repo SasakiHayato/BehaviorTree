@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace BehaviourTree
+namespace BehaviorTree
 {
     public interface IConditional
     {

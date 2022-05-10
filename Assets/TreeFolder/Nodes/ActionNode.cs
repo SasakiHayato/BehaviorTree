@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BehaviourTree
+namespace BehaviorTree
 {
     public partial class TreeManager : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using GraphProcessor;
 using UnityEngine;
 using System.Collections.Generic;
-using BehaviourTree;
+using BehaviorTree;
 
 namespace BehaviorTreeEditor
 {
@@ -9,13 +9,13 @@ namespace BehaviorTreeEditor
     [NodeMenuItem("Custom/BehaviorTree/Branch")]
     public class BranchNode : BaseNode
     {
-        [Input("SetConditional")] public BranchNode _branch;
+        [Input("Get")] public BranchNode _reapter;
+        [Input("GetConditional")] public ConditionalNode _condition;
 
         [SerializeField] TreeManager.BlockType _blockType;
         [SerializeField] TreeManager.ConditionalType _conditionalType;
         [SerializeField] int _priority;
-        [SerializeReference, SubclassSelector] List<IConditional> _setConditions;
-
+        
         public override string name => "BranchNode";
 
         protected override void Process()

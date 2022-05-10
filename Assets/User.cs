@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using BehaviorTree;
 
 public class User : MonoBehaviour
 {
@@ -8,7 +7,6 @@ public class User : MonoBehaviour
 
     void Start()
     {
-        //_tree.Run();
+        //_tree.Execute();
     }
-
 }

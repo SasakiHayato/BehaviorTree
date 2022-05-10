@@ -1,6 +1,6 @@
 using GraphProcessor;
 using UnityEngine;
-using BehaviourTree;
+using BehaviorTree;
 
 namespace BehaviorTreeEditor
 {

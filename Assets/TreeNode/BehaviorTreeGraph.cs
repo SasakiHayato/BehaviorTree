@@ -1,44 +1,34 @@
 # if UNITY_EDITOR
 
-using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using GraphProcessor;
 
-[CreateAssetMenu (menuName = "BehaviorTreeGraph")]
-public class BehaviorTreeGraph : BaseGraph
+namespace BehaviorTree
 {
-    //public void Run()
-    //{
-    //    var process = new BehaviorTreeGraphProcesser(this);
-    //    process.Run();
-    //    Debug.Log(process.Result);
-    //}
-
-    [OnOpenAsset(0)]
-    public static bool OnBaseGraphOpened(int instanceID, int line)
+    [CreateAssetMenu(menuName = "BehaviorTreeGraph")]
+    public class BehaviorTreeGraph : BaseGraph
     {
-        var asset = EditorUtility.InstanceIDToObject(instanceID) as BehaviorTreeGraph;
+        //public void Execute()
+        //{
+        //    var process = new TreeGraphExecutor(this);
+        //    process.Run();
+        //}
 
-        if (asset == null) return false;
+        [OnOpenAsset(0)]
+        public static bool OnBaseGraphOpened(int instanceID, int line)
+        {
+            var asset = EditorUtility.InstanceIDToObject(instanceID) as BehaviorTreeGraph;
 
-        var window = EditorWindow.GetWindow<BehaviorTreeGraphWindow>();
-        window.InitializeGraph(asset);
+            if (asset == null) return false;
 
-        return true;
+            var window = EditorWindow.GetWindow<BehaviorTreeGraphWindow>();
+            window.InitializeGraph(asset);
+
+            return true;
+        }
     }
-
-    ////@ŠJ‚¢‚½Û‚ÉResultNode‚ª‚È‚¯‚ê‚Î’Ç‰Á
-    //protected override void OnEnable()
-    //{
-    //    base.OnEnable();
-
-    //    if (!nodes.Any(n => n is ResultNode))
-    //    {
-    //        AddNode(BaseNode.CreateFromType<ResultNode>(Vector2.zero));
-    //    }
-    //}
 }
 
 #endif

@@ -1,4 +1,4 @@
-using BehaviourTree;
+using BehaviorTree;
 using UnityEngine;
 using BehaviorTreeEditor;
 
