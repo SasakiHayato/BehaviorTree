@@ -14,7 +14,7 @@ namespace BehaviorTreeEditor
 
         protected override void Process()
         {
-            
+            Debug.Log(name);
         }
     }
 }

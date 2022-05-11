@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GraphProcessor;
+using UnityEngine.UI;
 
 namespace BehaviorTree
 {
     public class TreeUser : MonoBehaviour
     {
+        [SerializeField] Text _text;
         [SerializeField] string _dataPath;
         BaseGraph _baseGraph;
 
@@ -18,7 +20,8 @@ namespace BehaviorTree
 
         void Update()
         {
-            Debug.Log(_baseGraph.nodes.Count);
+            //_baseGraph.nodes[0].OnProcess();
+            //_text.text = _baseGraph.nodes[0].GetType().ToString();
         }
     }
 }

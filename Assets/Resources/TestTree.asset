@@ -14,41 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedNodes: []
   nodes:
-  - rid: 3710212058681704449
-  - rid: 3710212059767242754
-  - rid: 3710212059767242756
-  - rid: 3710212059767242762
-  - rid: 3710212084350320641
+  - rid: 3710212084350320643
+  - rid: 3710212084350320644
   edges:
-  - GUID: 64d37f8f-a14e-4257-9032-56d4501bda2d
+  - GUID: 9df88ce9-39db-49cb-b85d-1c8984a83449
     owner: {fileID: 11400000}
-    inputNodeGUID: 4956fcd9-e44a-4c7c-894b-2cfd5faa3071
-    outputNodeGUID: f1f256a2-115a-4a0e-b058-51c30101c394
+    inputNodeGUID: 1a19bb58-561d-49a2-bcf1-43242b905136
+    outputNodeGUID: 14e64226-210a-4b7c-a1c6-f14a76ad02b0
     inputFieldName: _reapter
-    outputFieldName: aBaseNode
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: 15d0b918-8ff3-4fd1-b5ea-98a6662e243a
-    owner: {fileID: 11400000}
-    inputNodeGUID: 4956fcd9-e44a-4c7c-894b-2cfd5faa3071
-    outputNodeGUID: 26c2014c-e6fb-45c0-86f4-0430133e52c5
-    inputFieldName: _condition
-    outputFieldName: _node
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: 1bbadbc8-5ade-4279-98c3-f4c8a40e60c3
-    owner: {fileID: 11400000}
-    inputNodeGUID: 88a26731-8a7d-45d5-bdd4-9e74a1404e78
-    outputNodeGUID: f1f256a2-115a-4a0e-b058-51c30101c394
-    inputFieldName: _reapter
-    outputFieldName: aBaseNode
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: e354382d-9ebe-49ad-831d-4217aa97e7bd
-    owner: {fileID: 11400000}
-    inputNodeGUID: f1f256a2-115a-4a0e-b058-51c30101c394
-    outputNodeGUID: 670be8ff-d164-4b4a-a018-b8e622863318
-    inputFieldName: BaseNode
     outputFieldName: _branchNode
     inputPortIdentifier: 
     outputPortIdentifier: 
@@ -74,112 +47,50 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3710212058681704449
-      type: {class: BranchNode, ns: BehaviorTreeEditor, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: 4956fcd9-e44a-4c7c-894b-2cfd5faa3071
-        computeOrder: 3
-        position:
-          serializedVersion: 2
-          x: 653
-          y: -138.99997
-          width: 180
-          height: 119
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        _condition:
-          nodeCustomName: 
-          GUID: 
-          computeOrder: -1
-          position:
-            serializedVersion: 2
-            x: 0
-            y: 0
-            width: 0
-            height: 0
-          expanded: 0
-          debug: 0
-          nodeLock: 0
-          _conditionalData: {fileID: 0}
-        _type: 0
-        _priority: 0
-    - rid: 3710212059767242754
-      type: {class: SequenceNode, ns: BehaviorTreeEditor, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: f1f256a2-115a-4a0e-b058-51c30101c394
-        computeOrder: 2
-        position:
-          serializedVersion: 2
-          x: 271.005
-          y: -233.60002
-          width: 131.19998
-          height: 75.2
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-    - rid: 3710212059767242756
-      type: {class: ConditionalNode, ns: BehaviorTree, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: 26c2014c-e6fb-45c0-86f4-0430133e52c5
-        computeOrder: 0
-        position:
-          serializedVersion: 2
-          x: 223.20004
-          y: -96.799995
-          width: 359.2
-          height: 95.2
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        _conditionalData: {fileID: 11400000, guid: a55e6a9c6b8c5cd4891d5c22bd61832b, type: 2}
-    - rid: 3710212059767242762
-      type: {class: BranchNode, ns: BehaviorTreeEditor, asm: Assembly-CSharp-Editor}
-      data:
-        nodeCustomName: 
-        GUID: 88a26731-8a7d-45d5-bdd4-9e74a1404e78
-        computeOrder: 4
-        position:
-          serializedVersion: 2
-          x: 653
-          y: -410
-          width: 180
-          height: 119
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        _condition:
-          nodeCustomName: 
-          GUID: 
-          computeOrder: -1
-          position:
-            serializedVersion: 2
-            x: 0
-            y: 0
-            width: 0
-            height: 0
-          expanded: 0
-          debug: 0
-          nodeLock: 0
-          _conditionalData: {fileID: 0}
-        _type: 0
-        _priority: 0
-    - rid: 3710212084350320641
+    - rid: 3710212084350320643
       type: {class: RepearterNode, ns: BehaviorTreeEditor, asm: Assembly-CSharp-Editor}
       data:
         nodeCustomName: 
-        GUID: 670be8ff-d164-4b4a-a018-b8e622863318
-        computeOrder: 1
+        GUID: 14e64226-210a-4b7c-a1c6-f14a76ad02b0
+        computeOrder: 0
         position:
           serializedVersion: 2
-          x: -134.40002
-          y: -233.6
-          width: 312.8
-          height: 95.200005
+          x: 0
+          y: 0
+          width: 100
+          height: 100
         expanded: 0
         debug: 0
         nodeLock: 0
         _user: {fileID: 0}
+    - rid: 3710212084350320644
+      type: {class: BranchNode, ns: BehaviorTreeEditor, asm: Assembly-CSharp-Editor}
+      data:
+        nodeCustomName: 
+        GUID: 1a19bb58-561d-49a2-bcf1-43242b905136
+        computeOrder: 1
+        position:
+          serializedVersion: 2
+          x: 472.00012
+          y: 0.000015258789
+          width: 239.20001
+          height: 136.8
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        _condition:
+          nodeCustomName: 
+          GUID: 
+          computeOrder: -1
+          position:
+            serializedVersion: 2
+            x: 0
+            y: 0
+            width: 0
+            height: 0
+          expanded: 0
+          debug: 0
+          nodeLock: 0
+          _conditionalData: {fileID: 0}
+        _type: 0
+        _priority: 0

@@ -43,7 +43,7 @@ namespace BehaviorTreeEditor
 
         public void Run()
         {
-
+            nodes[0].OnProcess();
         }
     }
 }
