@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using GraphProcessor;
+using BehaviorTree;
 
 namespace BehaviorTreeEditor
 {
@@ -13,7 +14,7 @@ namespace BehaviorTreeEditor
     /// </summary>
 
     [CreateAssetMenu(menuName = "BehaviorTreeGraph")]
-    public class TreeGraph : BaseGraph
+    public class TreeGraph : BaseGraph, ITreeUser
     {
         // ダブルクリックでWindowを開くようにする
         [OnOpenAsset(0)]
@@ -34,10 +35,15 @@ namespace BehaviorTreeEditor
         {
             base.OnEnable();
 
-            if (!nodes.Any(n => n is ReapterNode))
+            if (!nodes.Any(n => n is RepearterNode))
             {
-                AddNode(BaseNode.CreateFromType<ReapterNode>(Vector2.zero));
+                AddNode(BaseNode.CreateFromType<RepearterNode>(Vector2.zero));
             }
+        }
+
+        public void Run()
+        {
+
         }
     }
 }

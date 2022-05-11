@@ -18,7 +18,7 @@ namespace BehaviorTreeEditor
 
         protected override bool canDeleteSelection
         {
-            get { return !selection.Any(s => s is ReapterNode); }
+            get { return !selection.Any(s => s is RepearterNode); }
         }
     }
 }

@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: ActionData
   m_EditorClassIdentifier: 
   ActionType: 0
+  Actions: []
+  references:
+    version: 2
+    RefIds: []

@@ -10,4 +10,9 @@ namespace BehaviorTree
     {
 
     }
+
+    public interface ITreeUser
+    {
+        void Run();
+    }
 }

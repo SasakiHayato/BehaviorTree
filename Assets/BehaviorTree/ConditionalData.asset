@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c4dbdce8b5de94d96b0d5016e3a1b6, type: 3}
   m_Name: ConditionalData
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 1
   Conditionals: []
   references:
     version: 2

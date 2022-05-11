@@ -12,6 +12,7 @@ namespace BehaviorTreeEditor
         [Input("Get")] public BranchNode _reapter;
         [Input("GetConditional")] public ConditionalNode _condition;
 
+        [SerializeField] ConditionalType _type;
         [SerializeField] int _priority;
         
         public override string name => "BranchNode";

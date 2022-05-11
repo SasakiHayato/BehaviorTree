@@ -11,6 +11,8 @@ namespace BehaviorTree
 
         [SerializeField] Data.Conditional _conditionalData;
 
+        public override string name => $"Conditional Type:{_conditionalData.Type}";
+
         protected override void Process()
         {
             
