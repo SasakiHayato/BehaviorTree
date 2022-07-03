@@ -14,8 +14,13 @@ namespace BehaviorTree.Node
 
         protected override void SetUp()
         {
-            _actionList.ForEach(a => a.SetUp(User));
-            _sequenceNode = new SequenceNode<Action>(_actionList);
+            if (_actionList == null || _actionList.Count <= 0)
+            {
+                return;
+            }
+
+            _actionList.ForEach(a => a.BaseSetUp(User));
+            _sequenceNode = new SequenceNode<Action>(_actionList, false);
         }
 
         protected override bool Execute()

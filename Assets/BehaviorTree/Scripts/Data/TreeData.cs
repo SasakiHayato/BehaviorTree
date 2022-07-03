@@ -1,3 +1,5 @@
+using UnityEngine;
+using BehaviorTree.Node;
 
 namespace BehaviorTree.Data
 {
@@ -7,6 +9,8 @@ namespace BehaviorTree.Data
     [System.Serializable]
     public class TreeData
     {
-        
+        [SerializeField] TreeExecuteType _treeExecuteType;
+        [SerializeField] ConditionalNode _condition;
+        [SerializeField] ActionNode _action;
     }
 }

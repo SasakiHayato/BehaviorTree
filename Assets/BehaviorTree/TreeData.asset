@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mastarCodition:
     _conditionType: 0
-    _couditionList:
-    - rid: 3921785406894899201
+    _couditionList: []
+  _treeData:
+  - _condition:
+      _conditionType: 0
+      _couditionList: []
   references:
     version: 2
-    RefIds:
-    - rid: 3921785406894899201
-      type: {class: Wait, ns: , asm: Assembly-CSharp}
+    RefIds: []

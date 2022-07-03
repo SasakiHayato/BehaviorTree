@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviorTree.Execute;
+using BehaviorTree.Data;
 
 namespace BehaviorTree.Node
 {
@@ -21,8 +22,10 @@ namespace BehaviorTree.Node
                 return;
             }
 
-            _couditionList.ForEach(c => c.SetUp(User));
+            _couditionList.ForEach(c => c.BaseSetUp(User));
+
             _selectorNode = new SelectorNode<Condition>(_couditionList);
+            _sequenceNode = new SequenceNode<Condition>(_couditionList);
         }
 
         protected override bool Execute()

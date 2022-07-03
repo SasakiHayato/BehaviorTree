@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using BehaviorTree.Node;
 
 namespace BehaviorTree.Data
@@ -12,13 +13,13 @@ namespace BehaviorTree.Data
     {
         [SerializeField] ConditionalNode _mastarCodition;
 
-        [SerializeField] TreeData _treeData;
+        [SerializeField] List<TreeData> _treeData;
 
         /// <summary>
         /// ªŠ²‚ÌğŒ‚Ì¬”Û‚ğ•Ô‚·
         /// </summary>
         public bool IsProcess => _mastarCodition.IsProcess;
-        public TreeData TreeData => _treeData;
+        public List<TreeData> TreeData => _treeData;
     }
 }
 
