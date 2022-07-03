@@ -4,6 +4,11 @@ using BehaviorTree.Execute;
 
 namespace BehaviorTree.Node
 {
+    /// <summary>
+    /// Actionを行うノード
+    /// 
+    /// 行動終了時、Actionの初期化を行う
+    /// </summary>
     [System.Serializable]
     public class ActionNode : NodeBase
     {
@@ -11,6 +16,8 @@ namespace BehaviorTree.Node
         List<Action> _actionList;
 
         SequenceNode<Action> _sequenceNode;
+
+        int _conut;
 
         protected override void SetUp()
         {
@@ -25,7 +32,29 @@ namespace BehaviorTree.Node
 
         protected override bool Execute()
         {
-            return _sequenceNode.IsProcess;
+            if (_conut >= _actionList.Count)
+            {
+                Init();
+                return true;
+            }
+            else
+            {
+                if (_sequenceNode.IsProcess)
+                {
+                    _actionList.ForEach(a => a.BaseInit());
+                    _conut++;
+                }
+
+                return false;
+            }
+        }
+
+        public override void Init()
+        {
+            base.Init();
+
+            _conut = 0;
+            _actionList.ForEach(a => a.BaseInit());
         }
     }
 }

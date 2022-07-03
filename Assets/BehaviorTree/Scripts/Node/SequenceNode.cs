@@ -3,6 +3,13 @@ using System.Linq;
 
 namespace BehaviorTree.Node
 {
+    /// <summary>
+    /// 順番に実行を操作するノード。
+    /// System.Linq All()の働き
+    /// 
+    /// Listが０又は、最後まで行った際に初期化を行う
+    /// </summary>
+    /// <typeparam name="Execution">Action又はCondition</typeparam>
     public class SequenceNode<Execution> : NodeBase where Execution : ExecuteBase
     {
         int _executeID;

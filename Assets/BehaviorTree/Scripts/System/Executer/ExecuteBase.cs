@@ -1,5 +1,8 @@
 namespace BehaviorTree
 {
+    /// <summary>
+    /// Action‚ÆCondition‚ğì¬‚·‚éÛ‚ÌŠî’êƒNƒ‰ƒX
+    /// </summary>
     public abstract class ExecuteBase
     {
         public bool IsExecute => BaseExecute();

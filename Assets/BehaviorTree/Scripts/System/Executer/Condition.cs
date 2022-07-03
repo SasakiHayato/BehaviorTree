@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace BehaviorTree.Execute
 {
+    /// <summary>
+    /// Conditionを作成する際の基底クラス
+    /// このクラスを派生してAIの行動条件の作成をする。
+    /// </summary>
     [System.Serializable]
     public abstract class Condition : ExecuteBase
     {

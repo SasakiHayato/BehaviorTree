@@ -12,5 +12,9 @@ namespace BehaviorTree.Data
         [SerializeField] TreeExecuteType _treeExecuteType;
         [SerializeField] ConditionalNode _condition;
         [SerializeField] ActionNode _action;
+
+        public TreeExecuteType TreeExecuteType => _treeExecuteType;
+        public ConditionalNode Condition => _condition;
+        public ActionNode Action => _action;
     }
 }

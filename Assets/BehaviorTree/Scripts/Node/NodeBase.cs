@@ -17,6 +17,8 @@ namespace BehaviorTree.Node
 
         public void SetNodeUser(GameObject user) => User = user;
 
+        public virtual void Init() { }
+
         public bool IsProcess => Execute();
 
         protected abstract void SetUp();

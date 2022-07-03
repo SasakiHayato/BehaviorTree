@@ -13,13 +13,39 @@ namespace BehaviorTree.Data
     {
         [SerializeField] ConditionalNode _mastarCodition;
 
-        [SerializeField] List<TreeData> _treeData;
+        [SerializeField] List<TreeData> _treeDataList;
+
+        List<NodeBase> _nodeList;
 
         /// <summary>
         /// ç™ä≤ÇÃèåèÇÃê¨î€Çï‘Ç∑
         /// </summary>
-        public bool IsProcess => _mastarCodition.IsProcess;
-        public List<TreeData> TreeData => _treeData;
+        public bool IsAccess => _mastarCodition.IsProcess;
+        public List<TreeData> TreeDataList => _treeDataList;
+
+        public List<NodeBase> NodeList
+        {
+            get
+            {
+                if (_nodeList == null)
+                {
+                    _nodeList = new List<NodeBase>();
+                    AddNode();
+                }
+
+                return _nodeList;
+            }
+        }
+
+        void AddNode()
+        {
+            _nodeList.Add(_mastarCodition);
+            foreach (TreeData data in _treeDataList)
+            {
+                _nodeList.Add(data.Action);
+                _nodeList.Add(data.Condition);
+            }
+        }
     }
 }
 

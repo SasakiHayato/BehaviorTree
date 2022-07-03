@@ -1,22 +1,27 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BehaviorTree.Node
 {
+    /// <summary>
+    /// ‚Ç‚ê‚©‚ÌÀs‚ğ‘€ì‚·‚éƒm[ƒh
+    /// 
+    /// System.Linq Any()‚Ì“­‚«
+    /// </summary>
+    /// <typeparam name="Execution"></typeparam>
     public class SelectorNode<Execution> : NodeBase where Execution : ExecuteBase
     {
-        Func<bool> _func;
+        List<Execution> _executeList;
         public SelectorNode(List<Execution> type) : base()
         {
-            _func = () => type.Any(e => e.IsExecute);
+            _executeList = type;
         }
 
         protected override void SetUp() { }
 
         protected override bool Execute()
         {
-            return _func.Invoke();
+            return _executeList.Any(e => e.IsExecute);
         }
     }
 }

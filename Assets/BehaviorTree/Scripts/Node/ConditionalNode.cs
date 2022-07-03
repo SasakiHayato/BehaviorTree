@@ -5,6 +5,11 @@ using BehaviorTree.Data;
 
 namespace BehaviorTree.Node
 {
+    /// <summary>
+    /// Conditionを判定するノード
+    /// 
+    /// 毎判定時、Conditionを初期化を行う
+    /// </summary>
     [System.Serializable]
     public class ConditionalNode : NodeBase
     {
@@ -15,6 +20,7 @@ namespace BehaviorTree.Node
 
         SelectorNode<Condition> _selectorNode;
         SequenceNode<Condition> _sequenceNode;
+
         protected override void SetUp()
         {
             if (_couditionList == null || _couditionList.Count <= 0)
@@ -30,12 +36,22 @@ namespace BehaviorTree.Node
 
         protected override bool Execute()
         {
+            bool isExecute = false;
+
+            if (_couditionList == null || _couditionList.Count <= 0)
+            {
+                return true;
+            }
+
             switch (_conditionType)
             {
-                case ConditionType.Selector: return _selectorNode.IsProcess;
-                case ConditionType.Sequence: return _sequenceNode.IsProcess;
-                default: return false;
+                case ConditionType.Selector: isExecute = _selectorNode.IsProcess; break;
+                case ConditionType.Sequence: isExecute = _sequenceNode.IsProcess; break;
             }
+
+            _couditionList.ForEach(c => c.BaseInit());
+
+            return isExecute;
         }
     }
 }
