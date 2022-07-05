@@ -22,8 +22,16 @@ MonoBehaviour:
       _couditionList: []
     _action:
       _actionList:
-      - rid: 3921785468580790272
       - rid: 3921785468580790273
+      - rid: 3921785468580790272
+  - _treeExecuteType: 0
+    _condition:
+      _conditionType: 0
+      _couditionList: []
+    _action:
+      _actionList:
+      - rid: 3921785472526319616
+      - rid: 3921785468580790272
   references:
     version: 2
     RefIds:
@@ -34,4 +42,8 @@ MonoBehaviour:
     - rid: 3921785468580790273
       type: {class: ActionConsole, ns: , asm: Assembly-CSharp}
       data:
-        _txt: Data1
+        _txt: Data1_1
+    - rid: 3921785472526319616
+      type: {class: ActionConsole, ns: , asm: Assembly-CSharp}
+      data:
+        _txt: Data1_2
