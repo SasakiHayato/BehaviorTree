@@ -41,7 +41,6 @@ namespace BehaviorTree.Node
             {
                 if (_sequenceNode.IsProcess)
                 {
-                    _actionList.ForEach(a => a.BaseInit());
                     _conut++;
                 }
 

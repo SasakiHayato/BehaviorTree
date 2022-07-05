@@ -7,7 +7,7 @@ namespace BehaviorTree
 {
     public class TreeModel
     {
-        public TreeModel(List<TreeDataBase> dataList, TreeUser user)
+        public TreeModel(List<TreeDataBase> dataList)
         {
             int id = 0;
 
@@ -26,17 +26,19 @@ namespace BehaviorTree
             }
 
             _executeList = dataList.OrderBy(d => d.ID).ToList();
-            _user = user;
+           
+            ModelData = new ModelData();
         }
 
+        public ModelData ModelData { get; private set; }
+
         List<TreeDataBase> _executeList;
-        TreeUser _user;
-
+        
         int _treeID;
-
         int _saveDataBaseID = int.MinValue;
+        bool _isTaskCall = false;
 
-        public TreeExecuteType ExecuteType { get; private set; }
+        TreeExecuteType _executeType;
 
         /// <summary>
         /// TreeDataを更新する際に呼ぶ
@@ -46,7 +48,7 @@ namespace BehaviorTree
         {
             TreeDataBase dataBase = GetTreeDataBase();
 
-            if (!CheckID(dataBase))
+            if (!CheckDataBaseID(dataBase))
             {
                 _saveDataBaseID = dataBase.ID;
                 _treeID = 0;
@@ -54,18 +56,12 @@ namespace BehaviorTree
 
             TreeData treeData = GetTreeData(dataBase);
 
-            _user.ModelData.SetTreeDataBase(dataBase);
-            _user.ModelData.SetTreeData(treeData);
+            ModelData.SetTreeDataBase(dataBase);
+            ModelData.SetTreeData(treeData);
 
             SetExecuteType(treeData);
-        }
 
-        public void SetNextTreeData(TreeDataBase dataBase)
-        {
-            TreeData treeData = GetTreeData(dataBase);
-
-            _user.ModelData.SetTreeData(treeData);
-            SetExecuteType(treeData);
+            _isTaskCall = false;
         }
 
         /// <summary>
@@ -77,7 +73,7 @@ namespace BehaviorTree
         /// <returns></returns>
         TreeDataBase GetTreeDataBase()
         {
-            TreeDataBase data = _user.ModelData.TreeDataBase;
+            TreeDataBase data = ModelData.TreeDataBase;
 
             if (data == null)
             {
@@ -102,18 +98,20 @@ namespace BehaviorTree
             try
             {
                 data = dataBase.TreeDataList[_treeID];
+                UnityEngine.Debug.Log($"aaa{_treeID}");
                 _treeID++;
             }
             catch(Exception)
             {
                 data = null;
+                UnityEngine.Debug.Log($"例外");
                 _treeID = 0;
             }
 
             return data;
         }
 
-        bool CheckID(TreeDataBase dataBase)
+        bool CheckDataBaseID(TreeDataBase dataBase)
         {
             if (_saveDataBaseID == int.MinValue)
             {
@@ -134,33 +132,42 @@ namespace BehaviorTree
         {
             if (treeData == null)
             {
-                ExecuteType = TreeExecuteType.Update;
+                _executeType = TreeExecuteType.Update;
             }
             else
             {
-                ExecuteType = treeData.TreeExecuteType;
+                _executeType = treeData.TreeExecuteType;
             }
         }
 
         public bool CheckIsCondition(TreeData treeData)
         {
-            return treeData.Condition.IsProcess;
+            bool isProcess = treeData.Condition.IsProcess;
+
+            switch (_executeType)
+            {
+                case TreeExecuteType.Update: return isProcess;
+
+                case TreeExecuteType.Task:
+                    
+                    if (isProcess && !_isTaskCall)
+                    {
+                        _isTaskCall = true;
+                    }
+
+                    return _isTaskCall;
+
+                default: return false;
+            }
         }
 
-        /// <summary>
-        /// IA行動の実行
-        /// 
-        /// 全てが終了した際にTrueを返す
-        /// </summary>
-        /// <param name="treeData"></param>
-        /// <returns></returns>
         public bool SetAction(TreeData treeData)
         {
              return treeData.Action.IsProcess;
         }
 
         /// <summary>
-        /// TreeDataの初期化を行う
+        /// 渡されたDataBaseがNullでなければTreeDataの初期化を行う
         /// </summary>
         /// <param name="dataBase"></param>
         public void Init(TreeDataBase dataBase)
@@ -173,8 +180,8 @@ namespace BehaviorTree
             {
                 dataBase.TreeDataList.ForEach(d => d.Action.Init());
 
-                _user.ModelData.SetTreeDataBase(null);
-                _user.ModelData.SetTreeData(null);
+                ModelData.SetTreeDataBase(null);
+                ModelData.SetTreeData(null);
 
                 _treeID = 0;
                 _saveDataBaseID = 0;
