@@ -7,6 +7,8 @@ public class TreeUser : MonoBehaviour
 {
     [SerializeField] List<TreeDataBase> _treeDataList;
 
+    bool _isTask = false;
+
     TreeModel _treeModel;
     public ModelData ModelData { get; private set; }
     
@@ -22,20 +24,13 @@ public class TreeUser : MonoBehaviour
 
     void Update()
     {
-        if (ModelData.TreeDataBase == null || !ModelData.TreeDataBase.IsAccess)
+        if (ModelData.TreeDataBase == null || !ModelData.TreeDataBase.IsAccess || ModelData.TreeData == null)
         {
             Set();
         }
         else
         {
-            if (ModelData.TreeData == null)
-            {
-                Set();
-            }
-            else
-            {
-                Run();
-            }
+            Run();
         }
     }
 
@@ -53,18 +48,38 @@ public class TreeUser : MonoBehaviour
     /// </summary>
     void Run()
     {
+        switch (_treeModel.ExecuteType)
+        {
+            case TreeExecuteType.Update: Normal(); break;
+            case TreeExecuteType.Task: Task(); break;
+        }
+    }
+
+    void Normal()
+    {
         if (_treeModel.CheckIsCondition(ModelData.TreeData))
         {
+            _isTask = false;
             bool isEnd = _treeModel.SetAction(ModelData.TreeData);
 
             if (isEnd)
             {
-                Set();
+                _treeModel.SetNextTreeData(ModelData.TreeDataBase);
             }
         }
-        else
-        {
+    }
 
+    void Task()
+    {
+        if (_treeModel.CheckIsCondition(ModelData.TreeData) || _isTask)
+        {
+            _isTask = true;
+            bool isEnd = _treeModel.SetAction(ModelData.TreeData);
+
+            if (isEnd)
+            {
+                _treeModel.SetNextTreeData(ModelData.TreeDataBase);
+            }
         }
     }
 }

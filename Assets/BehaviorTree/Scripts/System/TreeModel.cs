@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine;
 using System;
+using System.Linq;
 using BehaviorTree.Data;
 
 namespace BehaviorTree
@@ -9,15 +9,32 @@ namespace BehaviorTree
     {
         public TreeModel(List<TreeDataBase> dataList, TreeUser user)
         {
-            _executeList = dataList;
+            int id = 0;
+
+            foreach (TreeDataBase data in dataList)
+            {
+                if (data.HasCondition)
+                {
+                    data.ID = id;
+                }
+                else
+                {
+                    data.ID = 100 + id;
+                }
+
+                id++;
+            }
+
+            _executeList = dataList.OrderBy(d => d.ID).ToList();
             _user = user;
         }
 
         List<TreeDataBase> _executeList;
         TreeUser _user;
 
-        int _dataBaseID;
         int _treeID;
+
+        int _saveDataBaseID = int.MinValue;
 
         public TreeExecuteType ExecuteType { get; private set; }
 
@@ -28,7 +45,25 @@ namespace BehaviorTree
         public void OnNext()
         {
             TreeDataBase dataBase = GetTreeDataBase();
+
+            if (!CheckID(dataBase))
+            {
+                _treeID = 0;
+            }
+
             TreeData treeData = GetTreeData(dataBase);
+
+            _user.ModelData.SetTreeDataBase(dataBase);
+            _user.ModelData.SetTreeData(treeData);
+
+            SetExecuteType(treeData);
+        }
+
+        public void SetNextTreeData(TreeDataBase dataBase)
+        {
+            TreeData treeData = GetTreeData(dataBase);
+
+            _user.ModelData.SetTreeData(treeData);
             SetExecuteType(treeData);
         }
 
@@ -45,19 +80,8 @@ namespace BehaviorTree
 
             if (data == null)
             {
-                try
-                {
-                    data = _executeList[_dataBaseID];
-                    _dataBaseID++;
-                }
-                catch(Exception)
-                {
-                    data = _executeList[0];
-                    _dataBaseID = 0;
-                }
+                data = _executeList.First(e => e.IsAccess);
             }
-
-            _user.ModelData.SetTreeDataBase(data);
 
             return data;
         }
@@ -66,12 +90,14 @@ namespace BehaviorTree
         /// TreeData‚Ìæ“¾
         /// 
         /// List‚Ì‚Í‚¶‚ß‚©‚ç‡‚ÉTreeData‚ğ•Ô‚·
+        /// ”z—ñŠO‚É‚È‚Á‚½ê‡‚ÉNull‚ğ•Ô‚·
         /// </summary>
         /// <param name="dataBase"></param>
         /// <returns></returns>
         TreeData GetTreeData(TreeDataBase dataBase)
         {
             TreeData data = null;
+
             try
             {
                 data = dataBase.TreeDataList[_treeID];
@@ -82,9 +108,20 @@ namespace BehaviorTree
                 _treeID = 0;
             }
 
-            _user.ModelData.SetTreeData(data);
-
             return data;
+        }
+
+        bool CheckID(TreeDataBase dataBase)
+        {
+            if (_saveDataBaseID == int.MinValue)
+            {
+                _saveDataBaseID = dataBase.ID;
+                return false;
+            }
+            else
+            {
+                return _saveDataBaseID == dataBase.ID;
+            }
         }
 
         /// <summary>
@@ -126,8 +163,12 @@ namespace BehaviorTree
             else
             {
                 dataBase.TreeDataList.ForEach(d => d.Action.Init());
+
                 _user.ModelData.SetTreeDataBase(null);
                 _user.ModelData.SetTreeData(null);
+
+                _treeID = 0;
+                _saveDataBaseID = 0;
             }
         }
     }

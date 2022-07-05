@@ -21,11 +21,18 @@ namespace BehaviorTree.Node
         SelectorNode<Condition> _selectorNode;
         SequenceNode<Condition> _sequenceNode;
 
+        public bool HasCondition { get; private set; }
+
         protected override void SetUp()
         {
             if (_couditionList == null || _couditionList.Count <= 0)
             {
+                HasCondition = false;
                 return;
+            }
+            else
+            {
+                HasCondition = true;
             }
 
             _couditionList.ForEach(c => c.BaseSetUp(User));

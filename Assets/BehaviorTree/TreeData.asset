@@ -15,10 +15,7 @@ MonoBehaviour:
   _mastarCodition:
     _conditionType: 0
     _couditionList: []
-  _treeData:
-  - _condition:
-      _conditionType: 0
-      _couditionList: []
+  _treeDataList: []
   references:
     version: 2
     RefIds: []

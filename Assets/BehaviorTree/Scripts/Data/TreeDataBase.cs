@@ -17,10 +17,15 @@ namespace BehaviorTree.Data
 
         List<NodeBase> _nodeList;
 
+        public int ID { get; set; }
+
         /// <summary>
         /// ªŠ²‚ÌğŒ‚Ì¬”Û‚ğ•Ô‚·
         /// </summary>
         public bool IsAccess => _mastarCodition.IsProcess;
+
+        public bool HasCondition => _mastarCodition.HasCondition;
+        
         public List<TreeData> TreeDataList => _treeDataList;
 
         public List<NodeBase> NodeList
