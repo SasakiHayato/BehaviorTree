@@ -19,7 +19,7 @@ namespace BehaviorTree.Node
 
         int _conut;
 
-        protected override void SetUp()
+        public override void SetUp()
         {
             if (_actionList == null || _actionList.Count <= 0)
             {

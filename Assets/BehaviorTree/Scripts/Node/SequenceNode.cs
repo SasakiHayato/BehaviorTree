@@ -22,7 +22,8 @@ namespace BehaviorTree.Node
             _executeList = type;
             _isAll = isExecuteAll;
         }
-        protected override void SetUp() 
+
+        public override void SetUp() 
         {
             _executeID = 0;
         }

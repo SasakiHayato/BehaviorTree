@@ -48,6 +48,7 @@ namespace BehaviorTree
 
             if (!CheckID(dataBase))
             {
+                _saveDataBaseID = dataBase.ID;
                 _treeID = 0;
             }
 
@@ -96,7 +97,7 @@ namespace BehaviorTree
         /// <returns></returns>
         TreeData GetTreeData(TreeDataBase dataBase)
         {
-            TreeData data = null;
+            TreeData data;
 
             try
             {
@@ -105,6 +106,7 @@ namespace BehaviorTree
             }
             catch(Exception)
             {
+                data = null;
                 _treeID = 0;
             }
 
@@ -130,7 +132,14 @@ namespace BehaviorTree
         /// <param name="treeData"></param>
         void SetExecuteType(TreeData treeData)
         {
-            ExecuteType = treeData.TreeExecuteType;
+            if (treeData == null)
+            {
+                ExecuteType = TreeExecuteType.Update;
+            }
+            else
+            {
+                ExecuteType = treeData.TreeExecuteType;
+            }
         }
 
         public bool CheckIsCondition(TreeData treeData)

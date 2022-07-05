@@ -12,12 +12,12 @@ namespace BehaviorTree.Node
     public class SelectorNode<Execution> : NodeBase where Execution : ExecuteBase
     {
         List<Execution> _executeList;
-        public SelectorNode(List<Execution> type) : base()
+        public SelectorNode(List<Execution> type)
         {
             _executeList = type;
         }
 
-        protected override void SetUp() { }
+        public override void SetUp() { }
 
         protected override bool Execute()
         {

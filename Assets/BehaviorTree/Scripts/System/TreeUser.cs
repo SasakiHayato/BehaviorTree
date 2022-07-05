@@ -8,6 +8,7 @@ public class TreeUser : MonoBehaviour
     [SerializeField] List<TreeDataBase> _treeDataList;
 
     bool _isTask = false;
+    bool _isCall = false;
 
     TreeModel _treeModel;
     public ModelData ModelData { get; private set; }
@@ -16,7 +17,11 @@ public class TreeUser : MonoBehaviour
     {
         _treeDataList
             .ForEach(d => d.NodeList
-            .ForEach(n => n.SetNodeUser(gameObject)));
+            .ForEach(n => 
+            {
+                n.SetUp();
+                n.SetNodeUser(gameObject);
+            }));
 
         _treeModel = new TreeModel(_treeDataList, this);
         ModelData = new ModelData();
@@ -30,7 +35,7 @@ public class TreeUser : MonoBehaviour
         }
         else
         {
-            Run();
+            Execute();
         }
     }
 
@@ -46,20 +51,34 @@ public class TreeUser : MonoBehaviour
     /// <summary>
     /// TreeDataÇÃé¿çsProcess
     /// </summary>
-    void Run()
+    void Execute()
     {
-        switch (_treeModel.ExecuteType)
+        if (_isTask)
         {
-            case TreeExecuteType.Update: Normal(); break;
-            case TreeExecuteType.Task: Task(); break;
+            RunTask();
+            return;
+        }
+        else
+        {
+            switch (_treeModel.ExecuteType)
+            {
+                case TreeExecuteType.Update:
+
+                    _isCall = false;
+                    RunUpdate();
+
+                    break;
+                case TreeExecuteType.Task: _isTask = true; break;
+            }
         }
     }
 
-    void Normal()
+    void RunUpdate()
     {
         if (_treeModel.CheckIsCondition(ModelData.TreeData))
         {
             _isTask = false;
+
             bool isEnd = _treeModel.SetAction(ModelData.TreeData);
 
             if (isEnd)
@@ -69,16 +88,21 @@ public class TreeUser : MonoBehaviour
         }
     }
 
-    void Task()
+    void RunTask()
     {
-        if (_treeModel.CheckIsCondition(ModelData.TreeData) || _isTask)
+        if (_treeModel.CheckIsCondition(ModelData.TreeData) || _isCall)
         {
-            _isTask = true;
+            _isCall = true;
             bool isEnd = _treeModel.SetAction(ModelData.TreeData);
 
             if (isEnd)
             {
                 _treeModel.SetNextTreeData(ModelData.TreeDataBase);
+
+                if (ModelData.TreeData == null)
+                {
+                    _isTask = false;
+                }
             }
         }
     }
