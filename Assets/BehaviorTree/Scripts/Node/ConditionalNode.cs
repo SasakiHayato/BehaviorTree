@@ -10,6 +10,7 @@ namespace BehaviorTree.Node
     /// 
     /// –ˆ”»’èACondition‚ğ‰Šú‰»‚ğs‚¤
     /// </summary>
+    
     [System.Serializable]
     public class ConditionalNode : NodeBase
     {

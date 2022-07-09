@@ -34,11 +34,11 @@ namespace BehaviorTree
 
         List<TreeDataBase> _executeList;
         
-        int _treeID;
+        int _executeID;
         int _saveDataBaseID = int.MinValue;
         bool _isTaskCall = false;
 
-        TreeExecuteType _executeType;
+        ExecuteType _executeType;
 
         /// <summary>
         /// TreeDataを更新する際に呼ぶ
@@ -51,15 +51,17 @@ namespace BehaviorTree
             if (!CheckDataBaseID(dataBase))
             {
                 _saveDataBaseID = dataBase.ID;
-                _treeID = 0;
+                _executeID = 0;
             }
 
             TreeData treeData = GetTreeData(dataBase);
+            ExecuteData executeData = GetExecuteData(treeData);
 
             ModelData.SetTreeDataBase(dataBase);
             ModelData.SetTreeData(treeData);
+            ModelData.SetExecuteData(executeData);
 
-            SetExecuteType(treeData);
+            SetExecuteType(executeData);
 
             _isTaskCall = false;
         }
@@ -83,29 +85,39 @@ namespace BehaviorTree
             return data;
         }
 
+        TreeData GetTreeData(TreeDataBase dataBase)
+        {
+            TreeData data = dataBase.TreeData;
+
+            return data;
+        }
+
         /// <summary>
         /// TreeDataの取得
         /// 
         /// Listのはじめから順にTreeDataを返す
         /// 配列外になった場合にNullを返す
         /// </summary>
-        /// <param name="dataBase"></param>
+        /// <param name="treeData"></param>
         /// <returns></returns>
-        TreeData GetTreeData(TreeDataBase dataBase)
+        ExecuteData GetExecuteData(TreeData treeData)
         {
-            TreeData data;
+            ExecuteData data;
 
             try
             {
-                data = dataBase.TreeDataList[_treeID];
-                UnityEngine.Debug.Log($"aaa{_treeID}");
-                _treeID++;
+                if (treeData.TreeType == ConditionType.Selector)
+                {
+                    _executeID = UnityEngine.Random.Range(0, treeData.ExecuteList.Count);
+                }
+                
+                data = treeData.ExecuteList[_executeID];
+                _executeID++;
             }
             catch(Exception)
             {
                 data = null;
-                UnityEngine.Debug.Log($"例外");
-                _treeID = 0;
+                _executeID = 0;
             }
 
             return data;
@@ -128,11 +140,11 @@ namespace BehaviorTree
         /// 実行タイプの決定
         /// </summary>
         /// <param name="treeData"></param>
-        void SetExecuteType(TreeData treeData)
+        void SetExecuteType(ExecuteData treeData)
         {
             if (treeData == null)
             {
-                _executeType = TreeExecuteType.Update;
+                _executeType = ExecuteType.Update;
             }
             else
             {
@@ -140,15 +152,15 @@ namespace BehaviorTree
             }
         }
 
-        public bool CheckIsCondition(TreeData treeData)
+        public bool CheckIsCondition(ExecuteData treeData)
         {
             bool isProcess = treeData.Condition.IsProcess;
 
             switch (_executeType)
             {
-                case TreeExecuteType.Update: return isProcess;
+                case ExecuteType.Update: return isProcess;
 
-                case TreeExecuteType.Task:
+                case ExecuteType.Task:
                     
                     if (isProcess && !_isTaskCall)
                     {
@@ -161,7 +173,7 @@ namespace BehaviorTree
             }
         }
 
-        public bool SetAction(TreeData treeData)
+        public bool SetAction(ExecuteData treeData)
         {
              return treeData.Action.IsProcess;
         }
@@ -178,12 +190,13 @@ namespace BehaviorTree
             }
             else
             {
-                dataBase.TreeDataList.ForEach(d => d.Action.Init());
+                dataBase.TreeData.ExecuteList.ForEach(d => d.Action.Init());
 
                 ModelData.SetTreeDataBase(null);
                 ModelData.SetTreeData(null);
+                ModelData.SetExecuteData(null);
 
-                _treeID = 0;
+                _executeID = 0;
                 _saveDataBaseID = 0;
             }
         }

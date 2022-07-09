@@ -8,13 +8,12 @@ namespace BehaviorTree.Data
     /// AI行動のデータ作成クラス
     /// </summary>
 
-    [CreateAssetMenu(fileName = "TreeData")]
+    [CreateAssetMenu(fileName = "BehaviorTreeData")]
     public class TreeDataBase : ScriptableObject
     {
         [SerializeField] ConditionalNode _mastarCodition;
-
-        [SerializeField] List<TreeData> _treeDataList;
-
+        [SerializeField] TreeData _treeData;
+        
         List<NodeBase> _nodeList;
 
         public int ID { get; set; }
@@ -25,8 +24,8 @@ namespace BehaviorTree.Data
         public bool IsAccess => _mastarCodition.IsProcess;
 
         public bool HasCondition => _mastarCodition.HasCondition;
-        
-        public List<TreeData> TreeDataList => _treeDataList;
+
+        public TreeData TreeData => _treeData;
 
         public List<NodeBase> NodeList
         {
@@ -45,7 +44,7 @@ namespace BehaviorTree.Data
         void AddNode()
         {
             _nodeList.Add(_mastarCodition);
-            foreach (TreeData data in _treeDataList)
+            foreach (ExecuteData data in _treeData.ExecuteList)
             {
                 _nodeList.Add(data.Action);
                 _nodeList.Add(data.Condition);

@@ -1,15 +1,20 @@
-using System.Collections.Generic;
 using UnityEngine;
+using BehaviorTree.Node;
 
 namespace BehaviorTree.Data
 {
+    /// <summary>
+    /// AI行動のデータクラス
+    /// </summary>
     [System.Serializable]
     public class ExecuteData
     {
-        [SerializeField] ConditionType _conditionType;
-        [SerializeField] List<TreeDataBase> _treeDataList;
+        [SerializeField] ExecuteType _treeExecuteType;
+        [SerializeField] ConditionalNode _condition;
+        [SerializeField] ActionNode _action;
 
-        public ConditionType ConditionType => _conditionType;
-        public List<TreeDataBase> TreeList => _treeDataList;
+        public ExecuteType TreeExecuteType => _treeExecuteType;
+        public ConditionalNode Condition => _condition;
+        public ActionNode Action => _action;
     }
 }

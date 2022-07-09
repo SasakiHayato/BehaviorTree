@@ -39,13 +39,20 @@ public class BehaviorTreeUser : MonoBehaviour
     {
         if (ModelData.TreeDataBase == null || 
             !ModelData.TreeDataBase.IsAccess || 
-            ModelData.TreeData == null)
+            ModelData.ExecuteData == null)
         {
             Set();
         }
         else
         {
-            Execute();
+            if (Execute())
+            {
+                switch (ModelData.TreeData.TreeType)
+                {
+                    case ConditionType.Selector: Set(); break;
+                    case ConditionType.Sequence: _treeModel.OnNext(); break;
+                }
+            }
         }
     }
 
@@ -61,20 +68,22 @@ public class BehaviorTreeUser : MonoBehaviour
     /// <summary>
     /// TreeDataの実行Process
     /// </summary>
-    void Execute()
+    bool Execute()
     {
-        if (_treeModel.CheckIsCondition(ModelData.TreeData))
+        if (_treeModel.CheckIsCondition(ModelData.ExecuteData))
         {
             // Note. 行動が全て終了した時点でTrueを返す
-            if (ModelData.TreeData.Action.IsProcess)
+            if (ModelData.ExecuteData.Action.IsProcess)
             {
-                _treeModel.OnNext();
+                return true;
             }
         }
         else
         {
-            _treeModel.OnNext();
+            return true;
         }
+
+        return false;
     }
 
     private void OnDestroy()

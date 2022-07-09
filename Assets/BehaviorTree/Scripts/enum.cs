@@ -6,7 +6,7 @@ namespace BehaviorTree.Data
         Sequence,
     }
 
-    public enum TreeExecuteType
+    public enum ExecuteType
     {
         Update,
         Task,
