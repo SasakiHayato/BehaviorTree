@@ -13,12 +13,12 @@ public class ActionConsole : Action
         return true;
     }
 
-    protected override void Init()
+    protected override void Initialize()
     {
         Debug.Log("ActionInit");
     }
 
-    protected override void SetUp(GameObject user)
+    protected override void Setup(GameObject user)
     {
         Debug.Log($"SetUpAction. UserName {user}");
     }

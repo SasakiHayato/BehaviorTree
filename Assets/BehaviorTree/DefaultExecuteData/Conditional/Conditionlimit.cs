@@ -8,7 +8,7 @@ using BehaviorTree.Data;
 public class Conditionlimit : Conditional
 {
     BehaviorTreeUserData _userData;
-    protected override void SetUp(GameObject user)
+    protected override void Setup(GameObject user)
     {
         _userData = BehaviorTreeMasterData.Instance.FindUserData(user.GetInstanceID());
     }
@@ -18,7 +18,7 @@ public class Conditionlimit : Conditional
         return _userData.IsLimitCondition();
     }
 
-    protected override void Init()
+    protected override void Initialize()
     {
         
     }

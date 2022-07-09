@@ -8,7 +8,7 @@ public class ConditionTestAccess : Conditional
 {
     [SerializeField] bool _isAccess;
 
-    protected override void SetUp(GameObject user)
+    protected override void Setup(GameObject user)
     {
         
     }
@@ -18,7 +18,7 @@ public class ConditionTestAccess : Conditional
         return _isAccess;
     }
 
-    protected override void Init()
+    protected override void Initialize()
     {
 
     }

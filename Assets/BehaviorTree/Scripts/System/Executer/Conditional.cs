@@ -9,17 +9,17 @@ namespace BehaviorTree.Execute
     [System.Serializable]
     public abstract class Conditional : ExecuteBase
     {
-        public override void BaseInit() => Init();
+        public override void BaseInit() => Initialize();
 
-        public override void BaseSetUp(GameObject user) => SetUp(user);
+        public override void BaseSetup(GameObject user) => Setup(user);
 
-        protected abstract void SetUp(GameObject user);
+        protected abstract void Setup(GameObject user);
 
         protected abstract bool Try();
 
         protected override bool BaseExecute() => Try();
 
-        protected abstract void Init();
+        protected abstract void Initialize();
     }
 }
 

@@ -15,12 +15,12 @@ public class ActionWait : Action
         return _timer > _waitTime;
     }
 
-    protected override void Init()
+    protected override void Initialize()
     {
         _timer = 0;
     }
 
-    protected override void SetUp(GameObject user)
+    protected override void Setup(GameObject user)
     {
         
     }

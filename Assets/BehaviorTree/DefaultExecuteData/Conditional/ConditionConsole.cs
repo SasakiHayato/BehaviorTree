@@ -6,12 +6,12 @@ using BehaviorTree.Execute;
 /// </summary>
 public class ConditionConsole : Conditional
 {
-    protected override void Init()
+    protected override void Initialize()
     {
         Debug.Log("ConditionalInit");
     }
 
-    protected override void SetUp(GameObject user)
+    protected override void Setup(GameObject user)
     {
         Debug.Log($"ConditionalSetUp. UserName{user.name}");
     }

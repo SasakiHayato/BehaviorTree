@@ -26,7 +26,7 @@ namespace BehaviorTree.Node
                 return;
             }
 
-            _actionList.ForEach(a => a.BaseSetUp(User));
+            _actionList.ForEach(a => a.BaseSetup(User));
             _sequenceNode = new SequenceNode<Action>(_actionList, false);
         }
 

@@ -9,7 +9,7 @@ namespace BehaviorTree
 
         public abstract void BaseInit();
 
-        public abstract void BaseSetUp(UnityEngine.GameObject user);
+        public abstract void BaseSetup(UnityEngine.GameObject user);
 
         protected abstract bool BaseExecute();
     }

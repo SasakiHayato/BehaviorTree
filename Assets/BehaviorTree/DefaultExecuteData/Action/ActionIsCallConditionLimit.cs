@@ -8,7 +8,7 @@ using UnityEngine;
 public class ActionIsCallConditionLimit : Action
 {
     BehaviorTreeUserData _userData;
-    protected override void SetUp(GameObject user)
+    protected override void Setup(GameObject user)
     {
         _userData = BehaviorTreeMasterData.Instance.FindUserData(user.GetInstanceID());
     }
@@ -19,7 +19,7 @@ public class ActionIsCallConditionLimit : Action
         return true;
     }
 
-    protected override void Init()
+    protected override void Initialize()
     {
         
     }

@@ -9,16 +9,16 @@ namespace BehaviorTree.Execute
     [System.Serializable]
     public abstract class Action : ExecuteBase
     {
-        public override void BaseSetUp(GameObject user) => SetUp(user);
+        public override void BaseSetup(GameObject user) => Setup(user);
 
-        public override void BaseInit() => Init();
+        public override void BaseInit() => Initialize();
 
-        protected abstract void SetUp(GameObject user);
+        protected abstract void Setup(GameObject user);
 
         protected abstract bool Execute();
 
         protected override bool BaseExecute() => Execute();
 
-        protected abstract void Init();
+        protected abstract void Initialize();
     }
 }

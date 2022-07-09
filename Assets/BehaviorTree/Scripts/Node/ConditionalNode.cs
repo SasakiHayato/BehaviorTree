@@ -36,7 +36,7 @@ namespace BehaviorTree.Node
                 HasCondition = true;
             }
 
-            _couditionList.ForEach(c => c.BaseSetUp(User));
+            _couditionList.ForEach(c => c.BaseSetup(User));
 
             _selectorNode = new SelectorNode<Conditional>(_couditionList);
             _sequenceNode = new SequenceNode<Conditional>(_couditionList);
