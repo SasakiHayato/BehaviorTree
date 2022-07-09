@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
+using BehaviorTree.Data;
 
 public class BehaviorTreeWindow : EditorWindow
 {
@@ -12,6 +13,11 @@ public class BehaviorTreeWindow : EditorWindow
     public static bool Open(int instanceID, int line)
     {
         var asset = EditorUtility.InstanceIDToObject(instanceID);
+
+        if (asset as TreeDataBase == null)
+        {
+            return false;
+        } 
 
         EditorWindow graphEditor = CreateInstance<BehaviorTreeWindow>(); 
         graphEditor.Show();
