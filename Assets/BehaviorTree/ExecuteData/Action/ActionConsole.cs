@@ -1,6 +1,9 @@
 using UnityEngine;
 using BehaviorTree.Execute;
 
+/// <summary>
+/// DebugópÇÃAIçsìÆ
+/// </summary>
 public class ActionConsole : Action
 {
     [SerializeField] string _txt;

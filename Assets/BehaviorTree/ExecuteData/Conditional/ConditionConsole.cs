@@ -1,6 +1,9 @@
 using UnityEngine;
 using BehaviorTree.Execute;
 
+/// <summary>
+/// Debug—p‚ÌAIğŒ
+/// </summary>
 public class ConditionConsole : Conditional
 {
     protected override void Init()

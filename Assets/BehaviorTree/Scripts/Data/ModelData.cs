@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace BehaviorTree.Data
 {
+    /// <summary>
+    /// TreeModelのデータクラス。ここを参照してTreeModelを更新する
+    /// </summary>
     public class ModelData 
     {
         public TreeDataBase TreeDataBase { get; private set; }

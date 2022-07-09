@@ -1,15 +1,19 @@
-/// <summary>
-/// BehaviorTreeUserのデータクラス
-/// </summary>
+using UnityEngine;
 
 namespace BehaviorTree.Data
 {
-    public class UserData
+    /// <summary>
+    /// BehaviorTreeUserのデータクラス
+    /// </summary>
+    public class BehaviorTreeUserData
     {
-        public UserData(BehaviorTreeUser user)
+        public BehaviorTreeUserData(BehaviorTreeUser user, Transform transform)
         {
+            Offset = transform;
             User = user;
         }
+
+        public Transform Offset { get; private set; }
 
         public BehaviorTreeUser User { get; private set; }
         

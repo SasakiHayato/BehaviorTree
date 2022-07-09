@@ -2,12 +2,15 @@ using BehaviorTree.Execute;
 using BehaviorTree.Data;
 using UnityEngine;
 
+/// <summary>
+/// ConditionLimit‚ªŒÄ‚Î‚ê‚½‚Ì‚¿¬Œ÷‚µ‚½‚±‚Æ‚ğ’Ê’m‚ğs‚¤AIs“®
+/// </summary>
 public class ActionIsCallConditionLimit : Action
 {
-    UserData _userData;
+    BehaviorTreeUserData _userData;
     protected override void SetUp(GameObject user)
     {
-        _userData = MasterData.Instance.FindData(user.GetInstanceID());
+        _userData = BehaviorTreeMasterData.Instance.FindUserData(user.GetInstanceID());
     }
 
     protected override bool Execute()

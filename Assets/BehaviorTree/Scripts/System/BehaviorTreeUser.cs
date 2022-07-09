@@ -7,8 +7,10 @@ using BehaviorTree.Data;
 /// BehaviorTreeを使用するObjectにアタッチするクラス
 /// AI挙動の操作を行う
 /// </summary>
+
 public class BehaviorTreeUser : MonoBehaviour
 {
+    [SerializeField] Transform _offset;
     [SerializeField] int _limitConditionalCount;
     [SerializeField] List<TreeDataBase> _treeDataList;
 
@@ -17,8 +19,10 @@ public class BehaviorTreeUser : MonoBehaviour
     
     void Start()
     {
-        MasterData.Instance.CreateUser(GetInstanceID(), this);
-        MasterData.Instance.SetLimitConditionalCount(_limitConditionalCount, GetInstanceID());
+        BehaviorTreeMasterData.Instance.CreateUser(GetInstanceID(), this, _offset);
+        BehaviorTreeMasterData.Instance
+            .FindUserData(GetInstanceID())
+            .SetLimitConditionalCount(_limitConditionalCount);
 
         _treeDataList
             .ForEach(d => d.NodeList
@@ -33,7 +37,9 @@ public class BehaviorTreeUser : MonoBehaviour
 
     void Update()
     {
-        if (ModelData.TreeDataBase == null || !ModelData.TreeDataBase.IsAccess || ModelData.TreeData == null)
+        if (ModelData.TreeDataBase == null || 
+            !ModelData.TreeDataBase.IsAccess || 
+            ModelData.TreeData == null)
         {
             Set();
         }
@@ -73,7 +79,6 @@ public class BehaviorTreeUser : MonoBehaviour
 
     private void OnDestroy()
     {
-        _treeModel = null;
-        MasterData.Instance.DeleteUser(GetInstanceID());
+        BehaviorTreeMasterData.Instance.DeleteUser(GetInstanceID());
     }
 }

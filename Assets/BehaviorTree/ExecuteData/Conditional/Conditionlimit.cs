@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviorTree.Execute;
 using BehaviorTree.Data;
 
+/// <summary>
+/// ‰ñ”§ŒÀ‚Ì‚ ‚éAIs“®‚É‚Â‚¯‚éğŒ
+/// </summary>
 public class Conditionlimit : Conditional
 {
-    UserData _userData;
+    BehaviorTreeUserData _userData;
     protected override void SetUp(GameObject user)
     {
-        _userData = MasterData.Instance.FindData(user.GetInstanceID());
+        _userData = BehaviorTreeMasterData.Instance.FindUserData(user.GetInstanceID());
     }
 
     protected override bool Try()
