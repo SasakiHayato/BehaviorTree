@@ -32,13 +32,12 @@ public abstract class NodeBase : Node
 
     public NodeBase()
     {
-        title = Path;
-        mainContainer.Add(new TextField(title));
-
         _portController = new PortController();
 
         inputContainer.Add(_portController.Input);
         outputContainer.Add(_portController.Output);
+
+        title = Path;
     }
 
     internal string Path 
@@ -54,6 +53,11 @@ public abstract class NodeBase : Node
 
             return path;
         }
+    }
+
+    protected virtual void Execute()
+    {
+
     }
 
     protected abstract string SetPath();

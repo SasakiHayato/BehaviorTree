@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Experimental.GraphView;
+using System.Collections.Generic;
+using BehaviorTree.Execute;
 
 public class ConditionalNode : NodeBase
 {
-    
-    public ConditionalNode() : base() { }
+    [SerializeReference, SubclassSelector]
+    List<Conditional> _list;
+    public ConditionalNode() : base() 
+    {
+        
+        //mainContainer.Add(new PropertyField(_list));
+        RefreshExpandedState();
+    }
 
     protected override string SetPath() => "Condition";
 }

@@ -42,6 +42,6 @@ public class SearchNodeModel : ScriptableObject, ISearchWindowProvider
         NodeBase node = Activator.CreateInstance(type) as NodeBase;
         _graph.ViewGraphAction.Invoke(node);
 
-        return false;
+        return true;
     }
 }

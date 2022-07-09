@@ -9,6 +9,7 @@ using BehaviorTree.Data;
 /// </summary>
 public class BehaviorTreeUser : MonoBehaviour
 {
+    [SerializeField] int _limitConditionalCount;
     [SerializeField] List<TreeDataBase> _treeDataList;
 
     TreeModel _treeModel;
@@ -16,6 +17,9 @@ public class BehaviorTreeUser : MonoBehaviour
     
     void Start()
     {
+        MasterData.Instance.CreateUser(GetInstanceID(), this);
+        MasterData.Instance.SetLimitConditionalCount(_limitConditionalCount, GetInstanceID());
+
         _treeDataList
             .ForEach(d => d.NodeList
             .ForEach(n => 
@@ -65,5 +69,11 @@ public class BehaviorTreeUser : MonoBehaviour
         {
             _treeModel.OnNext();
         }
+    }
+
+    private void OnDestroy()
+    {
+        _treeModel = null;
+        MasterData.Instance.DeleteUser(GetInstanceID());
     }
 }
