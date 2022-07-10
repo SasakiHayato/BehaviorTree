@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41683dada60eea439988962322fb52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _runUpdate: 1
   _offset: {fileID: 1079559813}
   _limitConditionalCount: 3
   _treeDataList:

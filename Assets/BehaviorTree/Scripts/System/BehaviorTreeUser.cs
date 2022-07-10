@@ -11,7 +11,7 @@ using BehaviorTree.Data;
 
 public class BehaviorTreeUser : MonoBehaviour
 {
-    [SerializeField] bool _isRunUpdate = true;
+    [SerializeField] bool _runUpdate = true;
     [SerializeField] Transform _offset;
     [SerializeField] int _limitConditionalCount;
     [SerializeField] List<TreeDataBase> _treeDataList;
@@ -46,7 +46,7 @@ public class BehaviorTreeUser : MonoBehaviour
 
     void Update()
     {
-        if (_isRunUpdate)
+        if (_runUpdate)
         {
             Run();
         }

@@ -13,7 +13,7 @@ namespace BehaviorTree.Data
     {
         public static BehaviorTreeMasterData Instance => s_instance;
         static BehaviorTreeMasterData s_instance = new BehaviorTreeMasterData();
-        
+
         Dictionary<int, BehaviorTreeUserData> _userDic = new Dictionary<int, BehaviorTreeUserData>();
 
         public void CreateUser(int instanceID, BehaviorTreeUser user, Transform offset)
@@ -30,7 +30,7 @@ namespace BehaviorTree.Data
             }
             catch (Exception)
             {
-                Debug.Log("NothingData Return => Null");
+                Debug.Log($"NothingData. FindID{instanceID}.  Return => Null");
                 return null;
             }
         }
@@ -43,6 +43,11 @@ namespace BehaviorTree.Data
             }
 
             _userDic.Remove(instanceID);
+        }
+
+        public static void DisposeDictionary()
+        {
+            Instance._userDic = new Dictionary<int, BehaviorTreeUserData>();
         }
     }
 }
