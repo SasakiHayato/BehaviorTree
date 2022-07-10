@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using BehaviorTree;
 using BehaviorTree.Data;
@@ -10,12 +11,18 @@ using BehaviorTree.Data;
 
 public class BehaviorTreeUser : MonoBehaviour
 {
+    [SerializeField] bool _isRunUpdate = true;
     [SerializeField] Transform _offset;
     [SerializeField] int _limitConditionalCount;
     [SerializeField] List<TreeDataBase> _treeDataList;
 
     TreeModel _treeModel;
     ModelData ModelData => _treeModel.ModelData;
+
+    /// <summary>
+    /// 任意のタイミングでTreeModelを呼び出す
+    /// </summary>
+    public Action OnNext { get; private set; }
     
     void Start()
     {
@@ -33,12 +40,22 @@ public class BehaviorTreeUser : MonoBehaviour
             }));
 
         _treeModel = new TreeModel(_treeDataList);
+
+        OnNext = Run;
     }
 
     void Update()
     {
-        if (ModelData.TreeDataBase == null || 
-            !ModelData.TreeDataBase.IsAccess || 
+        if (_isRunUpdate)
+        {
+            Run();
+        }
+    }
+
+    void Run()
+    {
+        if (ModelData.TreeDataBase == null ||
+            !ModelData.TreeDataBase.IsAccess ||
             ModelData.ExecuteData == null)
         {
             Set();
