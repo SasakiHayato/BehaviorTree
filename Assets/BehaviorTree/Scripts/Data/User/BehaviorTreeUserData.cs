@@ -7,11 +7,14 @@ namespace BehaviorTree.Data
     /// </summary>
     public class BehaviorTreeUserData
     {
-        public BehaviorTreeUserData(BehaviorTreeUser user, Transform transform)
+        public BehaviorTreeUserData(BehaviorTreeUser user, Transform transform, string path)
         {
             Offset = transform;
             User = user;
+            Path = path;
         }
+
+        public string Path { get; private set; }
 
         public Transform Offset { get; private set; }
 

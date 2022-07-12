@@ -11,6 +11,7 @@ using BehaviorTree.Data;
 
 public class BehaviorTreeUser : MonoBehaviour
 {
+    [SerializeField] string _path;
     [SerializeField] bool _runUpdate = true;
     [SerializeField] Transform _offset;
     [SerializeField] int _limitConditionalCount;
@@ -26,16 +27,7 @@ public class BehaviorTreeUser : MonoBehaviour
     
     void Start()
     {
-        Transform offset = _offset;
-        if (offset == null)
-        {
-            offset = transform;
-        }
-
-        BehaviorTreeMasterData.Instance.CreateUser(GetInstanceID(), this, offset);
-        BehaviorTreeMasterData.Instance
-            .FindUserData(GetInstanceID())
-            .SetLimitConditionalCount(_limitConditionalCount);
+        SetData();
 
         _treeDataList
             .ForEach(d => d.NodeList
@@ -68,6 +60,28 @@ public class BehaviorTreeUser : MonoBehaviour
                 }
             }
         };
+    }
+
+    void SetData()
+    {
+        Transform offset = _offset;
+
+        if (offset == null)
+        {
+            offset = transform;
+        }
+
+        if (_path == "")
+        {
+            _path = BehaviorTreeMasterData.CreateUserPath();
+            Debug.LogWarning($"{gameObject.name} has not UserPath. So Create it. PathName is => {_path}.");
+        }
+
+        BehaviorTreeMasterData.Instance.CreateUser(GetInstanceID(), _path, this, offset);
+        BehaviorTreeMasterData.Instance
+            .FindUserData(GetInstanceID())
+            .SetLimitConditionalCount(_limitConditionalCount);
+
     }
 
     void Update()

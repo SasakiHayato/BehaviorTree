@@ -16,9 +16,22 @@ namespace BehaviorTree.Data
 
         Dictionary<int, BehaviorTreeUserData> _userDic = new Dictionary<int, BehaviorTreeUserData>();
 
-        public void CreateUser(int instanceID, BehaviorTreeUser user, Transform offset)
+        int _id;
+
+        const string UserPath = "BehaviorUser_No.";
+
+        public static string CreateUserPath()
         {
-            BehaviorTreeUserData data = new BehaviorTreeUserData(user, offset);
+            string path = UserPath + Instance._id.ToString();
+
+            Instance._id++;
+
+            return path;
+        }
+
+        public void CreateUser(int instanceID, string path, BehaviorTreeUser user, Transform offset)
+        {
+            BehaviorTreeUserData data = new BehaviorTreeUserData(user, offset, path);
             _userDic.Add(instanceID, data);
         }
 
@@ -31,6 +44,19 @@ namespace BehaviorTree.Data
             catch (Exception)
             {
                 Debug.Log($"NothingData. FindID{instanceID}.  Return => Null");
+                return null;
+            }
+        }
+
+        public BehaviorTreeUserData FindUserData(string path)
+        {
+            try
+            {
+                return _userDic.First(u => u.Value.Path == path).Value;
+            }
+            catch (Exception)
+            {
+                Debug.Log($"NothingData. FindPath{path}.  Return => Null");
                 return null;
             }
         }
@@ -57,9 +83,10 @@ namespace BehaviorTree.Data
             _userDic.Remove(instanceID);
         }
 
-        public static void DisposeDictionary()
+        public static void Dispose()
         {
             Instance._userDic = new Dictionary<int, BehaviorTreeUserData>();
+            Instance._id = 0;
         }
     }
 }
