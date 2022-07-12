@@ -26,7 +26,13 @@ public class BehaviorTreeUser : MonoBehaviour
     
     void Start()
     {
-        BehaviorTreeMasterData.Instance.CreateUser(GetInstanceID(), this, _offset);
+        Transform offset = _offset;
+        if (offset == null)
+        {
+            offset = transform;
+        }
+
+        BehaviorTreeMasterData.Instance.CreateUser(GetInstanceID(), this, offset);
         BehaviorTreeMasterData.Instance
             .FindUserData(GetInstanceID())
             .SetLimitConditionalCount(_limitConditionalCount);
@@ -41,7 +47,27 @@ public class BehaviorTreeUser : MonoBehaviour
 
         _treeModel = new TreeModel(_treeDataList);
 
-        OnNext = Run;
+        OnNext += () => 
+        {
+            if (ModelData.TreeDataBase == null ||
+            !ModelData.TreeDataBase.IsAccess ||
+            ModelData.ExecuteData == null)
+            {
+                Set();
+            }
+        };
+
+        OnNext += () =>
+        {
+            if (Execute())
+            {
+                switch (ModelData.TreeData.TreeType)
+                {
+                    case ConditionType.Selector: Set(); break;
+                    case ConditionType.Sequence: _treeModel.OnNext(); break;
+                }
+            }
+        };
     }
 
     void Update()
