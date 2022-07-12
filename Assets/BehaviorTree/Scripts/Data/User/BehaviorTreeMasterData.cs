@@ -35,6 +35,18 @@ namespace BehaviorTree.Data
             }
         }
 
+        public List<BehaviorTreeUserData> FindUserDataAll()
+        {
+            List<BehaviorTreeUserData> dataList = new List<BehaviorTreeUserData>();
+
+            foreach (KeyValuePair<int, BehaviorTreeUserData> data in _userDic)
+            {
+                dataList.Add(data.Value);
+            }
+
+            return dataList;
+        }
+
         public void DeleteUser(int instanceID)
         {
             if (_userDic.Count <= 0)
