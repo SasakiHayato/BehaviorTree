@@ -1,32 +1,34 @@
 using UnityEngine;
 using UnityEditor;
-using BehaviourTree;
 
-[CustomEditor(typeof(BehaviorTreeUser))]
-public class CustomBehaviourUser : Editor
+namespace BehaviourTree.Edit
 {
-    string _name;
-    bool _isOpen = false;
-
-    private void OnEnable()
+    [CustomEditor(typeof(BehaviorTreeUser))]
+    public class CustomBehaviourUser : Editor
     {
-        BehaviorTreeUser user = target as BehaviorTreeUser;
-        _name = user.gameObject.name;
-    }
+        string _name;
+        bool _isOpen = false;
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        if (GUILayout.Button("OpenNodeEditor") && !_isOpen)
+        private void OnEnable()
         {
-            _isOpen = true;
-            BehaviorTreeWindow.Open(_name, () => Close());
+            BehaviorTreeUser user = target as BehaviorTreeUser;
+            _name = user.gameObject.name;
         }
-    }
 
-    void Close()
-    {
-        _isOpen = false;
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+
+            if (GUILayout.Button("OpenNodeEditor") && !_isOpen)
+            {
+                _isOpen = true;
+                DataBaseWindow.Open(_name, () => Close());
+            }
+        }
+
+        void Close()
+        {
+            _isOpen = false;
+        }
     }
 }
