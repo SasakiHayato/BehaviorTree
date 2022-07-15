@@ -1,24 +1,21 @@
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Callbacks;
-using BehaviourTree.Data;
+using System;
 
 public class BehaviorTreeWindow : EditorWindow
 {
     public static string WindowName => nameof(BehaviorTreeWindow);
 
     BehaviorTreeGraphView _graphView = null;
+    static Action _action;
 
-    [OnOpenAsset(0)]
-    public static bool Open(int instanceID, int line)
+    public static void Open(string name, Action closeAction = null)
     {
-        var asset = EditorUtility.InstanceIDToObject(instanceID);
+        _action = closeAction;
 
         EditorWindow graphEditor = CreateInstance<BehaviorTreeWindow>(); 
         graphEditor.Show();
-        graphEditor.titleContent = new GUIContent($"{asset.name}_TreeEditor");
-
-        return false;
+        graphEditor.titleContent = new GUIContent($"{name}_TreeEditor");
     }
 
     void OnEnable()
@@ -26,5 +23,10 @@ public class BehaviorTreeWindow : EditorWindow
         _graphView = new BehaviorTreeGraphView();
 
         rootVisualElement.Add(_graphView);
+    }
+
+    private void OnDestroy()
+    {
+        _action.Invoke();
     }
 }

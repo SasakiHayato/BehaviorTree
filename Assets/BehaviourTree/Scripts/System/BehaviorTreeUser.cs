@@ -15,7 +15,7 @@ namespace BehaviourTree
         [SerializeField] bool _runUpdate = true;
         [SerializeField] Transform _offset;
         [SerializeField] int _limitConditionalCount;
-        [SerializeField] List<TreeDataBase> _treeDataList;
+        [SerializeField, HideInInspector] List<TreeDataBase> _treeDataList;
 
         bool _runRequest = true;
 
