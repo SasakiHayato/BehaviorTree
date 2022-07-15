@@ -16,17 +16,27 @@ namespace BehaviourTree.Data
 
         Dictionary<int, BehaviorTreeUserData> _userDic = new Dictionary<int, BehaviorTreeUserData>();
 
-        int _id;
+        int _pathID;
+        int _userID;
 
         const string UserPath = "BehaviorUser_No.";
 
         public static string CreateUserPath()
         {
-            string path = UserPath + Instance._id.ToString();
+            string path = UserPath + Instance._pathID.ToString();
 
-            Instance._id++;
+            Instance._pathID++;
 
             return path;
+        }
+
+        public static int CreateUserID()
+        {
+            int id = Instance._userID;
+
+            Instance._userID++;
+
+            return id;
         }
 
         public void CreateUser(int instanceID, string path, BehaviorTreeUser user, Transform offset)
@@ -86,7 +96,8 @@ namespace BehaviourTree.Data
         public static void Dispose()
         {
             Instance._userDic = new Dictionary<int, BehaviorTreeUserData>();
-            Instance._id = 0;
+            Instance._pathID = 0;
+            Instance._userID = 0;
         }
     }
 }

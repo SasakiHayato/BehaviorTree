@@ -17,6 +17,8 @@ namespace BehaviourTree
         [SerializeField] int _limitConditionalCount;
         [SerializeField] List<TreeDataBase> _treeDataList;
 
+        bool _runRequest = true;
+
         TreeModel _treeModel;
         ModelData ModelData => _treeModel.ModelData;
 
@@ -25,20 +27,53 @@ namespace BehaviourTree
         /// </summary>
         public Action OnNext { get; private set; }
 
+        public int UserID { get; private set; }
+
         void Start()
         {
-            SetData();
+            SetUserData();
+            SetModelData();
+            SetAction();
+        }
 
+        void SetUserData()
+        {
+            Transform offset = _offset;
+
+            if (offset == null)
+            {
+                offset = transform;
+            }
+
+            if (_path == "")
+            {
+                _path = BehaviorTreeMasterData.CreateUserPath();
+                Debug.LogWarning($"{gameObject.name} has not UserPath. So Create it. PathName is => {_path}.");
+            }
+
+            UserID = BehaviorTreeMasterData.CreateUserID();
+
+            BehaviorTreeMasterData.Instance.CreateUser(UserID, _path, this, offset);
+            BehaviorTreeMasterData.Instance
+                .FindUserData(UserID)
+                .SetLimitConditionalCount(_limitConditionalCount);
+        }
+
+        void SetModelData()
+        {
             _treeDataList
                 .ForEach(d => d.NodeList
                 .ForEach(n =>
                 {
-                    n.SetUp();
                     n.SetNodeUser(gameObject);
+                    n.SetUp();
                 }));
 
             _treeModel = new TreeModel(_treeDataList);
+        }
 
+        void SetAction()
+        {
             OnNext += () =>
             {
                 if (ModelData.TreeDataBase == null ||
@@ -62,31 +97,9 @@ namespace BehaviourTree
             };
         }
 
-        void SetData()
-        {
-            Transform offset = _offset;
-
-            if (offset == null)
-            {
-                offset = transform;
-            }
-
-            if (_path == "")
-            {
-                _path = BehaviorTreeMasterData.CreateUserPath();
-                Debug.LogWarning($"{gameObject.name} has not UserPath. So Create it. PathName is => {_path}.");
-            }
-
-            BehaviorTreeMasterData.Instance.CreateUser(GetInstanceID(), _path, this, offset);
-            BehaviorTreeMasterData.Instance
-                .FindUserData(GetInstanceID())
-                .SetLimitConditionalCount(_limitConditionalCount);
-
-        }
-
         void Update()
         {
-            if (_runUpdate)
+            if (_runUpdate && _runRequest)
             {
                 Run();
             }
@@ -143,6 +156,7 @@ namespace BehaviourTree
             return false;
         }
 
+        public void SetRunRequest(bool isRun) => _runRequest = isRun;
         private void OnDestroy()
         {
             BehaviorTreeMasterData.Instance.DeleteUser(GetInstanceID());

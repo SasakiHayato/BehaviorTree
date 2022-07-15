@@ -10,6 +10,7 @@ namespace BehaviourTree.Node
     /// List‚ª‚O–”‚ÍAÅŒã‚Ü‚Ås‚Á‚½Û‚É‰Šú‰»‚ğs‚¤
     /// </summary>
     /// <typeparam name="Execution">Action–”‚ÍCondition</typeparam>
+   
     public class SequenceNode<Execution> : NodeBase where Execution : ExecuteBase
     {
         int _executeID;

@@ -9,6 +9,7 @@ namespace BehaviourTree.Node
     /// System.Linq Any()‚Ì“­‚«
     /// </summary>
     /// <typeparam name="Execution"></typeparam>
+    
     public class SelectorNode<Execution> : NodeBase where Execution : ExecuteBase
     {
         List<Execution> _executeList;

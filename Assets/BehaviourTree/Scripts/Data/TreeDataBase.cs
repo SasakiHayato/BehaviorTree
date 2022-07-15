@@ -7,16 +7,16 @@ namespace BehaviourTree.Data
     /// <summary>
     /// AI行動のデータ作成クラス
     /// </summary>
-
-    [CreateAssetMenu(fileName = "BehaviorTreeData")]
-    public class TreeDataBase : ScriptableObject
+    
+    [System.Serializable]
+    public class TreeDataBase 
     {
         [SerializeField] ConditionalNode _mastarCodition;
         [SerializeField] TreeData _treeData;
         
         List<NodeBase> _nodeList;
 
-        public int ID { get; set; }
+        public int ID { get; set; } = -999;
 
         /// <summary>
         /// 根幹の条件の成否を返す
@@ -49,6 +49,13 @@ namespace BehaviourTree.Data
                 _nodeList.Add(data.Action);
                 _nodeList.Add(data.Condition);
             }
+        }
+
+        public void Copy()
+        {
+            ConditionalNode conditional = _mastarCodition.Copy<ConditionalNode>();
+            Debug.Log(conditional.HasCondition);
+            Debug.Log(_mastarCodition.HasCondition);
         }
     }
 }

@@ -28,10 +28,17 @@ namespace BehaviourTree.Node
 
             _actionList.ForEach(a => a.BaseSetup(User));
             _sequenceNode = new SequenceNode<Action>(_actionList, false);
+
+            Debug.Log(_sequenceNode);
         }
 
         protected override bool Execute()
         {
+            if (_sequenceNode == null)
+            {
+                _sequenceNode = new SequenceNode<Action>(_actionList, false);
+            }
+
             if (_conut >= _actionList.Count)
             {
                 Init();

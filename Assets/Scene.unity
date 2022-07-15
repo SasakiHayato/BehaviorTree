@@ -217,6 +217,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &662835296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 662835298}
+  - component: {fileID: 662835297}
+  m_Layer: 0
+  m_Name: User (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &662835297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662835296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e41683dada60eea439988962322fb52a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: 
+  _runUpdate: 1
+  _offset: {fileID: 662835298}
+  _limitConditionalCount: 3
+  _treeDataList:
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList: []
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785707430936576
+          - rid: 3921785707430936579
+  references:
+    version: 2
+    RefIds:
+    - rid: 3921785707430936576
+      type: {class: ActionConsole, ns: , asm: Assembly-CSharp}
+      data:
+        _txt: BB
+    - rid: 3921785707430936579
+      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
+      data:
+        _waitTime: 1
+--- !u!4 &662835298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662835296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1079559812
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,11 +335,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41683dada60eea439988962322fb52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _path: 
   _runUpdate: 1
   _offset: {fileID: 1079559813}
   _limitConditionalCount: 3
   _treeDataList:
-  - {fileID: 11400000, guid: 8fb7766d2fbbbc440abbc5b72bebd5a4, type: 2}
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList: []
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785707430936577
+          - rid: 3921785707430936578
+  references:
+    version: 2
+    RefIds:
+    - rid: 3921785707430936577
+      type: {class: ActionConsole, ns: , asm: Assembly-CSharp}
+      data:
+        _txt: AA
+    - rid: 3921785707430936578
+      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
+      data:
+        _waitTime: 1
 --- !u!1 &1173595280
 GameObject:
   m_ObjectHideFlags: 0

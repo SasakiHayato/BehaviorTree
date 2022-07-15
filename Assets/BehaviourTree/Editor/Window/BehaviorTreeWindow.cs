@@ -14,11 +14,6 @@ public class BehaviorTreeWindow : EditorWindow
     {
         var asset = EditorUtility.InstanceIDToObject(instanceID);
 
-        if (asset as TreeDataBase == null)
-        {
-            return false;
-        } 
-
         EditorWindow graphEditor = CreateInstance<BehaviorTreeWindow>(); 
         graphEditor.Show();
         graphEditor.titleContent = new GUIContent($"{asset.name}_TreeEditor");
