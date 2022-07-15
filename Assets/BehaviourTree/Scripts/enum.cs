@@ -2,8 +2,8 @@ namespace BehaviourTree.Data
 {
     public enum ConditionType
     {
-        Selector,
         Sequence,
+        Selector,
     }
 
     public enum ExecuteType
