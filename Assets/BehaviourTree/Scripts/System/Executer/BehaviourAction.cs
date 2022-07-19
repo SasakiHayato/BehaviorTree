@@ -7,7 +7,7 @@ namespace BehaviourTree.Execute
     /// このクラスを派生してAI行動を作成する。
     /// </summary>
     [System.Serializable]
-    public abstract class Action : ExecuteBase
+    public abstract class BehaviourAction : ExecuteBase
     {
         public override void BaseSetup(GameObject user) => Setup(user);
 

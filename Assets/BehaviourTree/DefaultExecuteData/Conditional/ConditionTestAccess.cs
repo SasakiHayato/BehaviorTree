@@ -4,7 +4,7 @@ using BehaviourTree.Execute;
 /// <summary>
 /// Debug—p‚ÌğŒw’è‚µ‚½Bool‚ğ•Ô‚·
 /// </summary>
-public class ConditionTestAccess : Conditional
+public class ConditionTestAccess : BehaviourConditional
 {
     [SerializeField] bool _isAccess;
 

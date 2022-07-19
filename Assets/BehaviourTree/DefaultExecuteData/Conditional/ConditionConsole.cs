@@ -4,7 +4,7 @@ using BehaviourTree.Execute;
 /// <summary>
 /// Debug—p‚ÌAIğŒ
 /// </summary>
-public class ConditionConsole : Conditional
+public class ConditionConsole : BehaviourConditional
 {
     protected override void Initialize()
     {

@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 public class ConditionalNode : NodeBase
 {
     [SerializeReference, SubclassSelector]
-    List<Conditional> _list;
+    List<BehaviourConditional> _list;
     public ConditionalNode() : base() 
     {
         

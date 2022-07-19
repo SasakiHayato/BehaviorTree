@@ -13,9 +13,9 @@ namespace BehaviourTree.Node
     public class ActionNode : NodeBase
     {
         [SerializeReference, SubclassSelector]
-        List<Action> _actionList;
+        List<BehaviourAction> _actionList;
 
-        SequenceNode<Action> _sequenceNode;
+        SequenceNode<BehaviourAction> _sequenceNode;
 
         int _conut;
 
@@ -27,18 +27,11 @@ namespace BehaviourTree.Node
             }
 
             _actionList.ForEach(a => a.BaseSetup(User));
-            _sequenceNode = new SequenceNode<Action>(_actionList, false);
-
-            Debug.Log(_sequenceNode);
+            _sequenceNode = new SequenceNode<BehaviourAction>(_actionList, false);
         }
 
         protected override bool Execute()
         {
-            if (_sequenceNode == null)
-            {
-                _sequenceNode = new SequenceNode<Action>(_actionList, false);
-            }
-
             if (_conut >= _actionList.Count)
             {
                 Init();
@@ -61,6 +54,7 @@ namespace BehaviourTree.Node
 
             _conut = 0;
             _actionList.ForEach(a => a.BaseInit());
+            _sequenceNode.Init();
         }
     }
 }

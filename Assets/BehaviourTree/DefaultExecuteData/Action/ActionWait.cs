@@ -4,7 +4,7 @@ using BehaviourTree.Execute;
 /// <summary>
 /// éwíËéûä‘ë“ÇΩÇπÇÈAIçsìÆ
 /// </summary>
-public class ActionWait : Action
+public class ActionWait : BehaviourAction
 {
     [SerializeField] float _waitTime;
 
@@ -17,6 +17,7 @@ public class ActionWait : Action
 
     protected override void Initialize()
     {
+        Debug.Log("InitTimer");
         _timer = 0;
     }
 }

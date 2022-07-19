@@ -54,6 +54,7 @@ namespace BehaviourTree
             UserID = BehaviorTreeMasterData.CreateUserID();
 
             BehaviorTreeMasterData.Instance.CreateUser(UserID, _path, this, offset);
+
             BehaviorTreeMasterData.Instance
                 .FindUserData(UserID)
                 .SetLimitConditionalCount(_limitConditionalCount);
@@ -157,9 +158,10 @@ namespace BehaviourTree
         }
 
         public void SetRunRequest(bool isRun) => _runRequest = isRun;
+
         private void OnDestroy()
         {
-            BehaviorTreeMasterData.Instance.DeleteUser(GetInstanceID());
+            BehaviorTreeMasterData.Instance.DeleteUser(UserID);
         }
     }
 }

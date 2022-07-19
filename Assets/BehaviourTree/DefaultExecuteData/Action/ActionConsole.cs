@@ -6,7 +6,7 @@ using BehaviourTree.Data;
 /// <summary>
 /// DebugópÇÃAIçsìÆ
 /// </summary>
-public class ActionConsole : Action
+public class ActionConsole : BehaviourAction
 {
     [SerializeField] string _txt;
 

@@ -1,22 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree.Execute;
 
-public class NewAction : BehaviourAction
+public class ActionIdle : BehaviourAction
 {
+    Enemy _enemy;
     protected override void Setup(GameObject user)
     {
-        
+        _enemy = user.GetComponent<Enemy>();
     }
 
     protected override bool Execute()
     {
+        _enemy.MoveDir = Vector2.zero;
         return true;
-    }
-
-    protected override void Initialize()
-    {
-        
     }
 }

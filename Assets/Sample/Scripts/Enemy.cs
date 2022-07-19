@@ -1,22 +1,21 @@
 using UnityEngine;
 
-public class GameUser : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] float _speed;
 
     Rigidbody2D _rb;
 
+    public Vector2 MoveDir { get; set; }
+
     void Start()
-    { 
+    {
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0;
     }
 
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-
-        _rb.velocity = new Vector2(x, y).normalized * _speed;
+        _rb.velocity = MoveDir.normalized * _speed;
     }
 }

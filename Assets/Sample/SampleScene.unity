@@ -134,9 +134,11 @@ GameObject:
   - component: {fileID: 1689373443}
   - component: {fileID: 1689373442}
   - component: {fileID: 1689373441}
+  - component: {fileID: 1689373445}
   - component: {fileID: 1689373444}
+  - component: {fileID: 1689373446}
   m_Layer: 0
-  m_Name: TreeUser
+  m_Name: TreeUser_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,10 +225,104 @@ MonoBehaviour:
   _runUpdate: 1
   _offset: {fileID: 0}
   _limitConditionalCount: 0
-  _treeDataList: []
+  _treeDataList:
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList: []
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785787633369088
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 3921785787633369091
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785787633369092
+          - rid: 3921785787633369093
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 3921785787633369089
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785787633369090
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3921785787633369088
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+    - rid: 3921785787633369089
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _findDistance: 5
+    - rid: 3921785787633369090
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+    - rid: 3921785787633369091
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _findDistance: 2
+    - rid: 3921785787633369092
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+    - rid: 3921785787633369093
+      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
+      data:
+        _waitTime: 2
+--- !u!114 &1689373445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689373439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a242d4d825bcaf4ebe2a1f745f9e290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 2.5
+--- !u!50 &1689373446
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689373439}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1728745360
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e0f6ce24bf3d84da6f92d416c81706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 5
 --- !u!23 &1854841666
 MeshRenderer:
   m_ObjectHideFlags: 0

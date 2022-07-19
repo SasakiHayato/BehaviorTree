@@ -50,13 +50,6 @@ namespace BehaviourTree.Data
                 _nodeList.Add(data.Condition);
             }
         }
-
-        public void Copy()
-        {
-            ConditionalNode conditional = _mastarCodition.Copy<ConditionalNode>();
-            Debug.Log(conditional.HasCondition);
-            Debug.Log(_mastarCodition.HasCondition);
-        }
     }
 }
 

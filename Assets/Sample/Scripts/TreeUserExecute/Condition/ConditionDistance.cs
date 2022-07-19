@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using BehaviourTree.Execute;
 
-public class ConditionDistance : MonoBehaviour
+public class ConditionDistance : BehaviourConditional
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float _findDistance;
+
+    Transform _user;
+    GameUser _gameUser;
+
+    protected override void Setup(GameObject user)
     {
-        
+        _user = user.transform;
+        _gameUser = Object.FindObjectOfType<GameUser>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override bool Try()
     {
-        
+        float dist = Vector2.Distance(_user.position, _gameUser.transform.position);
+
+        return _findDistance > dist;
     }
 }

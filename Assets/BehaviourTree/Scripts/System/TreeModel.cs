@@ -127,7 +127,6 @@ namespace BehaviourTree
         {
             if (_saveDataBaseID == int.MinValue)
             {
-                _saveDataBaseID = dataBase.ID;
                 return false;
             }
             else
@@ -173,11 +172,6 @@ namespace BehaviourTree
             }
         }
 
-        public bool SetAction(ExecuteData treeData)
-        {
-             return treeData.Action.IsProcess;
-        }
-
         /// <summary>
         /// “n‚³‚ê‚½DataBase‚ªNull‚Å‚È‚¯‚ê‚ÎTreeData‚Ì‰Šú‰»‚ğs‚¤
         /// </summary>
@@ -197,7 +191,7 @@ namespace BehaviourTree
                 ModelData.SetExecuteData(null);
 
                 _executeID = 0;
-                _saveDataBaseID = 0;
+                _saveDataBaseID = int.MinValue;
             }
         }
     }

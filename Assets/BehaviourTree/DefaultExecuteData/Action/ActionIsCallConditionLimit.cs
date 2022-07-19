@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// ConditionLimit‚ªŒÄ‚Î‚ê‚½‚Ì‚¿¬Œ÷‚µ‚½‚±‚Æ‚ğ’Ê’m‚ğs‚¤AIs“®
 /// </summary>
-public class ActionIsCallConditionLimit : Action
+public class ActionIsCallConditionLimit : BehaviourAction
 {
     BehaviorTreeUserData _userData;
     protected override void Setup(GameObject user)

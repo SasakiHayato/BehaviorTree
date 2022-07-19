@@ -17,10 +17,10 @@ namespace BehaviourTree.Node
         [SerializeField] ConditionType _conditionType;
 
         [SerializeReference, SubclassSelector]
-        List<Conditional> _couditionList;
+        List<BehaviourConditional> _couditionList;
 
-        SelectorNode<Conditional> _selectorNode;
-        SequenceNode<Conditional> _sequenceNode;
+        SelectorNode<BehaviourConditional> _selectorNode;
+        SequenceNode<BehaviourConditional> _sequenceNode;
 
         public bool HasCondition { get; private set; }
 
@@ -38,8 +38,8 @@ namespace BehaviourTree.Node
 
             _couditionList.ForEach(c => c.BaseSetup(User));
 
-            _selectorNode = new SelectorNode<Conditional>(_couditionList);
-            _sequenceNode = new SequenceNode<Conditional>(_couditionList);
+            _selectorNode = new SelectorNode<BehaviourConditional>(_couditionList);
+            _sequenceNode = new SequenceNode<BehaviourConditional>(_couditionList);
         }
 
         protected override bool Execute()

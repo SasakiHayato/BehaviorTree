@@ -7,7 +7,7 @@ namespace BehaviourTree.Execute
     /// このクラスを派生してAIの行動条件の作成をする。
     /// </summary>
     [System.Serializable]
-    public abstract class Conditional : ExecuteBase
+    public abstract class BehaviourConditional : ExecuteBase
     {
         public override void BaseInit() => Initialize();
 

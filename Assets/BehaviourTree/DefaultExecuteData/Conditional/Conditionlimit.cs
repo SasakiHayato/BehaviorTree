@@ -5,7 +5,7 @@ using BehaviourTree.Data;
 /// <summary>
 /// ‰ñ”§ŒÀ‚Ì‚ ‚éAIs“®‚É‚Â‚¯‚éğŒ
 /// </summary>
-public class Conditionlimit : Conditional
+public class Conditionlimit : BehaviourConditional
 {
     BehaviorTreeUserData _userData;
     protected override void Setup(GameObject user)
