@@ -7,6 +7,7 @@ using System;
 public class SearchNodeGraphView : GraphView
 {
     public Action<GraphElement> ViewGraphAction { get; private set; }
+
     public SearchNodeGraphView(Action<GraphElement> action)
     {
         ViewGraphAction = action;
