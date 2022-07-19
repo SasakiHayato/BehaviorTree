@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace BehaviourTree.Edit
 {
-    [CustomEditor(typeof(BehaviorTreeUser))]
+    [CustomEditor(typeof(BehaviourTreeUser))]
     public class CustomBehaviourUser : Editor
     {
         string _name;
@@ -11,7 +11,7 @@ namespace BehaviourTree.Edit
 
         private void OnEnable()
         {
-            BehaviorTreeUser user = target as BehaviorTreeUser;
+            BehaviourTreeUser user = target as BehaviourTreeUser;
             _name = user.gameObject.name;
         }
 

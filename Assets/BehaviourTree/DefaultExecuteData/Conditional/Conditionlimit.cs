@@ -7,10 +7,10 @@ using BehaviourTree.Data;
 /// </summary>
 public class Conditionlimit : BehaviourConditional
 {
-    BehaviorTreeUserData _userData;
+    BehaviourTreeUserData _userData;
     protected override void Setup(GameObject user)
     {
-        _userData = BehaviorTreeMasterData.Instance.FindUserData(user.GetInstanceID());
+        _userData = BehaviourTreeMasterData.Instance.FindUserData(user.GetInstanceID());
     }
 
     protected override bool Try()

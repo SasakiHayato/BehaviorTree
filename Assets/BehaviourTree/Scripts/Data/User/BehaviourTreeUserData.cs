@@ -5,9 +5,9 @@ namespace BehaviourTree.Data
     /// <summary>
     /// BehaviorTreeUserのデータクラス
     /// </summary>
-    public class BehaviorTreeUserData
+    public class BehaviourTreeUserData
     {
-        public BehaviorTreeUserData(BehaviorTreeUser user, Transform transform, string path)
+        public BehaviourTreeUserData(BehaviourTreeUser user, Transform transform, string path)
         {
             Offset = transform;
             User = user;
@@ -18,7 +18,7 @@ namespace BehaviourTree.Data
 
         public Transform Offset { get; private set; }
 
-        public BehaviorTreeUser User { get; private set; }
+        public BehaviourTreeUser User { get; private set; }
         
         public int LimitConditionalCount { get; private set; }
 

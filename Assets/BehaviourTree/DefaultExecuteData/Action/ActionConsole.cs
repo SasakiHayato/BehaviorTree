@@ -10,11 +10,11 @@ public class ActionConsole : BehaviourAction
 {
     [SerializeField] string _txt;
 
-    BehaviorTreeUserData _userData;
+    BehaviourTreeUserData _userData;
     protected override void Setup(GameObject user)
     {
-        BehaviorTreeUser treeUser = user.GetComponent<BehaviorTreeUser>();
-        _userData = BehaviorTreeMasterData.Instance.FindUserData(treeUser.UserID);
+        BehaviourTreeUser treeUser = user.GetComponent<BehaviourTreeUser>();
+        _userData = BehaviourTreeMasterData.Instance.FindUserData(treeUser.UserID);
 
         Debug.Log($"SetUpAction. UserName {_userData.Path}");
     }

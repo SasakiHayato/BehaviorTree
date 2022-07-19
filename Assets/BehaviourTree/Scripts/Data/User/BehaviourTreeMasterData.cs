@@ -9,12 +9,12 @@ using System.Linq;
 
 namespace BehaviourTree.Data
 {
-    public class BehaviorTreeMasterData
+    public class BehaviourTreeMasterData
     {
-        public static BehaviorTreeMasterData Instance => s_instance;
-        static BehaviorTreeMasterData s_instance = new BehaviorTreeMasterData();
+        public static BehaviourTreeMasterData Instance => s_instance;
+        static BehaviourTreeMasterData s_instance = new BehaviourTreeMasterData();
 
-        Dictionary<int, BehaviorTreeUserData> _userDic = new Dictionary<int, BehaviorTreeUserData>();
+        Dictionary<int, BehaviourTreeUserData> _userDic = new Dictionary<int, BehaviourTreeUserData>();
 
         int _pathID;
         int _userID;
@@ -39,13 +39,13 @@ namespace BehaviourTree.Data
             return id;
         }
 
-        public void CreateUser(int instanceID, string path, BehaviorTreeUser user, Transform offset)
+        public void CreateUser(int instanceID, string path, BehaviourTreeUser user, Transform offset)
         {
-            BehaviorTreeUserData data = new BehaviorTreeUserData(user, offset, path);
+            BehaviourTreeUserData data = new BehaviourTreeUserData(user, offset, path);
             _userDic.Add(instanceID, data);
         }
 
-        public BehaviorTreeUserData FindUserData(int instanceID)
+        public BehaviourTreeUserData FindUserData(int instanceID)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace BehaviourTree.Data
             }
         }
 
-        public BehaviorTreeUserData FindUserData(string path)
+        public BehaviourTreeUserData FindUserData(string path)
         {
             try
             {
@@ -71,11 +71,11 @@ namespace BehaviourTree.Data
             }
         }
 
-        public List<BehaviorTreeUserData> FindUserDataAll()
+        public List<BehaviourTreeUserData> FindUserDataAll()
         {
-            List<BehaviorTreeUserData> dataList = new List<BehaviorTreeUserData>();
+            List<BehaviourTreeUserData> dataList = new List<BehaviourTreeUserData>();
 
-            foreach (KeyValuePair<int, BehaviorTreeUserData> data in _userDic)
+            foreach (KeyValuePair<int, BehaviourTreeUserData> data in _userDic)
             {
                 dataList.Add(data.Value);
             }
@@ -95,7 +95,7 @@ namespace BehaviourTree.Data
 
         public static void Dispose()
         {
-            Instance._userDic = new Dictionary<int, BehaviorTreeUserData>();
+            Instance._userDic = new Dictionary<int, BehaviourTreeUserData>();
             Instance._pathID = 0;
             Instance._userID = 0;
         }

@@ -9,7 +9,7 @@ namespace BehaviourTree
     /// BehaviorTreeを使用するObjectにアタッチするクラス
     /// AI挙動の操作を行う
     /// </summary>
-    public class BehaviorTreeUser : MonoBehaviour
+    public class BehaviourTreeUser : MonoBehaviour
     {
         [SerializeField] string _path;
         [SerializeField] bool _runUpdate = true;
@@ -47,15 +47,15 @@ namespace BehaviourTree
 
             if (_path == "")
             {
-                _path = BehaviorTreeMasterData.CreateUserPath();
+                _path = BehaviourTreeMasterData.CreateUserPath();
                 Debug.LogWarning($"{gameObject.name} has not UserPath. So Create it. PathName is => {_path}.");
             }
 
-            UserID = BehaviorTreeMasterData.CreateUserID();
+            UserID = BehaviourTreeMasterData.CreateUserID();
 
-            BehaviorTreeMasterData.Instance.CreateUser(UserID, _path, this, offset);
+            BehaviourTreeMasterData.Instance.CreateUser(UserID, _path, this, offset);
 
-            BehaviorTreeMasterData.Instance
+            BehaviourTreeMasterData.Instance
                 .FindUserData(UserID)
                 .SetLimitConditionalCount(_limitConditionalCount);
         }
@@ -175,7 +175,7 @@ namespace BehaviourTree
 
         private void OnDestroy()
         {
-            BehaviorTreeMasterData.Instance.DeleteUser(UserID);
+            BehaviourTreeMasterData.Instance.DeleteUser(UserID);
         }
     }
 }
