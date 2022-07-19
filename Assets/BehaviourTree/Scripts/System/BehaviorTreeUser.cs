@@ -108,11 +108,10 @@ namespace BehaviourTree
 
         void Run()
         {
-            if (ModelData.TreeDataBase == null ||
-                !ModelData.TreeDataBase.IsAccess ||
-                ModelData.ExecuteData == null)
+            if (!HasDataCheck() && !_treeModel.IsTaskCall)
             {
                 Debug.Log($"ExecuteData_{ModelData.ExecuteData}");
+
                 Set();
             }
             else
@@ -122,9 +121,27 @@ namespace BehaviourTree
                     switch (ModelData.TreeData.TreeType)
                     {
                         case ConditionType.Selector: Set(); break;
-                        case ConditionType.Sequence: _treeModel.OnNext(); break;
+                        case ConditionType.Sequence:
+
+                            ModelData.ExecuteData.Action.Init();
+                            _treeModel.OnNext()
+                            ; break;
                     }
                 }
+            }
+        }
+
+        bool HasDataCheck()
+        {
+            if (ModelData.TreeDataBase == null ||
+                !ModelData.TreeDataBase.IsAccess ||
+                ModelData.ExecuteData == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 

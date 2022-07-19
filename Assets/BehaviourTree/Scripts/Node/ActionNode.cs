@@ -39,7 +39,6 @@ namespace BehaviourTree.Node
 
             if (_conut >= _actionList.Count)
             {
-                Init();
                 return true;
             }
             else

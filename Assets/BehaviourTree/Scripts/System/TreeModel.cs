@@ -36,7 +36,7 @@ namespace BehaviourTree
         
         int _executeID;
         int _saveDataBaseID = int.MinValue;
-        bool _isTaskCall = false;
+        public bool IsTaskCall { get; private set; } = false;
 
         ExecuteType _executeType;
 
@@ -46,6 +46,8 @@ namespace BehaviourTree
         /// </summary>
         public void OnNext()
         {
+            IsTaskCall = false;
+
             TreeDataBase dataBase = GetTreeDataBase();
 
             if (!CheckDataBaseID(dataBase))
@@ -62,7 +64,6 @@ namespace BehaviourTree
             ModelData.SetExecuteData(executeData);
 
             SetExecuteType(executeData);
-
         }
 
         /// <summary>
@@ -156,16 +157,16 @@ namespace BehaviourTree
 
             switch (_executeType)
             {
-                case ExecuteType.Update: return isProcess && ModelData.TreeDataBase.IsAccess;
+                case ExecuteType.Update: return isProcess;
 
                 case ExecuteType.Task:
                     
-                    if (isProcess && !_isTaskCall && ModelData.TreeDataBase.IsAccess)
+                    if (isProcess && !IsTaskCall)
                     {
-                        _isTaskCall = true;
+                        IsTaskCall = true;
                     }
 
-                    return _isTaskCall;
+                    return IsTaskCall;
 
                 default: return false;
             }
@@ -191,7 +192,6 @@ namespace BehaviourTree
 
                 _executeID = 0;
                 _saveDataBaseID = int.MinValue;
-                _isTaskCall = false;
             }
         }
     }
