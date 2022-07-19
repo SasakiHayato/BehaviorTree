@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689373439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.985, y: 0, z: 0}
+  m_LocalPosition: {x: -4.346, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -253,7 +253,7 @@ MonoBehaviour:
         _action:
           _actionList:
           - rid: 3921785787633369092
-          - rid: 3921785787633369093
+          - rid: 3921785787633369095
   - _mastarCodition:
       _conditionType: 0
       _couditionList:
@@ -276,7 +276,7 @@ MonoBehaviour:
     - rid: 3921785787633369089
       type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
       data:
-        _findDistance: 5
+        _findDistance: 10
     - rid: 3921785787633369090
       type: {class: ActionMove, ns: , asm: Assembly-CSharp}
     - rid: 3921785787633369091
@@ -285,10 +285,10 @@ MonoBehaviour:
         _findDistance: 2
     - rid: 3921785787633369092
       type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
-    - rid: 3921785787633369093
-      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
+    - rid: 3921785787633369095
+      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
       data:
-        _waitTime: 2
+        _rotateSpeed: 200
 --- !u!114 &1689373445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854841664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.722, y: 0, z: 0}
+  m_LocalPosition: {x: 3.45, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

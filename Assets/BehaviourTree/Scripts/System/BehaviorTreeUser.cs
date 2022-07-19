@@ -77,9 +77,7 @@ namespace BehaviourTree
         {
             OnNext += () =>
             {
-                if (ModelData.TreeDataBase == null ||
-                !ModelData.TreeDataBase.IsAccess ||
-                ModelData.ExecuteData == null)
+                if (!HasModelDataCheck() && !_treeModel.IsTaskCall)
                 {
                     Set();
                 }
