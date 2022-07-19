@@ -33,6 +33,11 @@ namespace BehaviourTree.Node
 
         protected override bool Execute()
         {
+            if (_executeList.Count <= 0 || _executeList.Count <= _executeID)
+            {
+                return true;
+            }
+
             if (_isAll)
             {
                 return _executeList.All(e => e.IsExecute);
@@ -45,12 +50,6 @@ namespace BehaviourTree.Node
 
         bool OnNext()
         {
-            if (_executeList.Count <= 0 || _executeList.Count <= _executeID)
-            {
-                _executeID = 0;
-                return true;
-            }
-
             if (_executeList[_executeID].IsExecute)
             {
                 _executeID++;

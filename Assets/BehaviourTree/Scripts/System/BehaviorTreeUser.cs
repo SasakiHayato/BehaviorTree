@@ -112,6 +112,7 @@ namespace BehaviourTree
                 !ModelData.TreeDataBase.IsAccess ||
                 ModelData.ExecuteData == null)
             {
+                Debug.Log($"ExecuteData_{ModelData.ExecuteData}");
                 Set();
             }
             else

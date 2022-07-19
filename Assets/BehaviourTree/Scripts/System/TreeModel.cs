@@ -56,14 +56,13 @@ namespace BehaviourTree
 
             TreeData treeData = GetTreeData(dataBase);
             ExecuteData executeData = GetExecuteData(treeData);
-
+            UnityEngine.Debug.Log($"SetExecuteData_{executeData} :ID_{_executeID}");
             ModelData.SetTreeDataBase(dataBase);
             ModelData.SetTreeData(treeData);
             ModelData.SetExecuteData(executeData);
 
             SetExecuteType(executeData);
 
-            _isTaskCall = false;
         }
 
         /// <summary>
@@ -76,7 +75,7 @@ namespace BehaviourTree
         TreeDataBase GetTreeDataBase()
         {
             TreeDataBase data = ModelData.TreeDataBase;
-
+            
             if (data == null)
             {
                 data = _executeList.First(e => e.IsAccess);
@@ -110,7 +109,7 @@ namespace BehaviourTree
                 {
                     _executeID = UnityEngine.Random.Range(0, treeData.ExecuteList.Count);
                 }
-                
+
                 data = treeData.ExecuteList[_executeID];
                 _executeID++;
             }
@@ -157,11 +156,11 @@ namespace BehaviourTree
 
             switch (_executeType)
             {
-                case ExecuteType.Update: return isProcess;
+                case ExecuteType.Update: return isProcess && ModelData.TreeDataBase.IsAccess;
 
                 case ExecuteType.Task:
                     
-                    if (isProcess && !_isTaskCall)
+                    if (isProcess && !_isTaskCall && ModelData.TreeDataBase.IsAccess)
                     {
                         _isTaskCall = true;
                     }
@@ -192,6 +191,7 @@ namespace BehaviourTree
 
                 _executeID = 0;
                 _saveDataBaseID = int.MinValue;
+                _isTaskCall = false;
             }
         }
     }

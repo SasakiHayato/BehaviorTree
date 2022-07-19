@@ -32,6 +32,11 @@ namespace BehaviourTree.Node
 
         protected override bool Execute()
         {
+            if (_sequenceNode.IsProcess)
+            {
+                _conut++;
+            }
+
             if (_conut >= _actionList.Count)
             {
                 Init();
@@ -39,11 +44,6 @@ namespace BehaviourTree.Node
             }
             else
             {
-                if (_sequenceNode.IsProcess)
-                {
-                    _conut++;
-                }
-
                 return false;
             }
         }
@@ -51,7 +51,7 @@ namespace BehaviourTree.Node
         public override void Init()
         {
             base.Init();
-
+            
             _conut = 0;
             _actionList.ForEach(a => a.BaseInit());
             _sequenceNode.Init();

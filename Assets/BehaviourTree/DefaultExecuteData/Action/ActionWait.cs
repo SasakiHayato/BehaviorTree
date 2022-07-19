@@ -12,12 +12,14 @@ public class ActionWait : BehaviourAction
     protected override bool Execute()
     {
         _timer += Time.deltaTime;
+
+        Debug.Log(_timer > _waitTime);
+
         return _timer > _waitTime;
     }
 
     protected override void Initialize()
     {
-        Debug.Log("InitTimer");
         _timer = 0;
     }
 }
