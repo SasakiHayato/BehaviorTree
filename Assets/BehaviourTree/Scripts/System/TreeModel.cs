@@ -56,9 +56,12 @@ namespace BehaviourTree
                 _executeID = 0;
             }
 
+            UnityEngine.Debug.Log($"DataBaseID_{dataBase.ID}");
+
             TreeData treeData = GetTreeData(dataBase);
+            
             ExecuteData executeData = GetExecuteData(treeData);
-            UnityEngine.Debug.Log($"SetExecuteData_{executeData} :ID_{_executeID}");
+            
             ModelData.SetTreeDataBase(dataBase);
             ModelData.SetTreeData(treeData);
             ModelData.SetExecuteData(executeData);
@@ -100,7 +103,7 @@ namespace BehaviourTree
         /// </summary>
         /// <param name="treeData"></param>
         /// <returns></returns>
-        ExecuteData GetExecuteData(TreeData treeData)
+        ExecuteData GetExecuteData(TreeData treeData) //Note. TreeDataÇÕïKÇ∏NullÇ≈ÇÕÇ»Ç¢Ç±Ç∆ÇëzíËÅB
         {
             ExecuteData data;
 

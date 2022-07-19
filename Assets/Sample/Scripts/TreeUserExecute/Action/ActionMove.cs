@@ -15,8 +15,9 @@ public class ActionMove : BehaviourAction
     protected override bool Execute()
     {
         Vector3 dir = _gameUser.transform.position - _enemy.transform.position;
-
         _enemy.MoveDir = dir;
+
+        Debug.Log("Move");
 
         return true;
     }

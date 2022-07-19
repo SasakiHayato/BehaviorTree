@@ -53,7 +53,7 @@ namespace BehaviourTree.Node
             
             _conut = 0;
             _actionList.ForEach(a => a.BaseInit());
-            _sequenceNode.Init();
+            _sequenceNode.SetUp();
         }
     }
 }

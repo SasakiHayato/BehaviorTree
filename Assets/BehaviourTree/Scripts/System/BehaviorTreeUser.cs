@@ -108,10 +108,8 @@ namespace BehaviourTree
 
         void Run()
         {
-            if (!HasDataCheck() && !_treeModel.IsTaskCall)
+            if (!HasModelDataCheck() && !_treeModel.IsTaskCall)
             {
-                Debug.Log($"ExecuteData_{ModelData.ExecuteData}");
-
                 Set();
             }
             else
@@ -131,7 +129,7 @@ namespace BehaviourTree
             }
         }
 
-        bool HasDataCheck()
+        bool HasModelDataCheck()
         {
             if (ModelData.TreeDataBase == null ||
                 !ModelData.TreeDataBase.IsAccess ||
