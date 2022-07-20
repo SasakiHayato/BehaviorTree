@@ -1,17 +1,34 @@
 using UnityEngine;
+using UnityEditor.UIElements;
+using UnityEngine.UIElements;
 using System.Collections.Generic;
-using BehaviourTree.Execute;
 
-public class ConditionalNode : NodeBase
+using BehaviourTree.Data;
+
+namespace BehaviourTree.Edit
 {
-    [SerializeReference, SubclassSelector]
-    List<BehaviourConditional> _list;
-    public ConditionalNode() : base() 
+    public class ConditionalNode : BaseNode
     {
-        
-        //mainContainer.Add(new PropertyField(_list));
-        RefreshExpandedState();
-    }
+        public ConditionalNode() : base(true, true)
+        {
+            title = "Condition";
 
-    protected override string SetPath() => "Condition";
+            mainContainer.Add(SetPopup());
+        }
+
+        VisualElement SetPopup()
+        {
+            var choices = new List<ConditionType> { ConditionType.Sequence, ConditionType.Selector };
+            
+            var popupField = new PopupField<ConditionType>("ConditionalType", choices, 0);
+            
+            popupField.value = ConditionType.Sequence;
+            popupField.RegisterCallback<ChangeEvent<ConditionType>>((evt) =>
+            {
+                Debug.Log(evt.newValue);
+            });
+
+            return popupField;
+        }
+    }
 }

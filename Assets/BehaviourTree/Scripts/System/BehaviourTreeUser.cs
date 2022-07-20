@@ -29,6 +29,10 @@ namespace BehaviourTree
 
         public int UserID { get; private set; }
 
+        #if UNITY_EDITOR
+        public List<TreeDataBase> TreeDataBaseList => _treeDataList;
+        #endif
+
         void Start()
         {
             SetUserData();

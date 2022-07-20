@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 1689373442}
   - component: {fileID: 1689373441}
   - component: {fileID: 1689373445}
-  - component: {fileID: 1689373444}
   - component: {fileID: 1689373446}
+  - component: {fileID: 1689373447}
   m_Layer: 0
   m_Name: TreeUser_Enemy
   m_TagString: Untagged
@@ -209,86 +209,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1689373444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689373439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e41683dada60eea439988962322fb52a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _path: 
-  _runUpdate: 1
-  _offset: {fileID: 0}
-  _limitConditionalCount: 0
-  _treeDataList:
-  - _mastarCodition:
-      _conditionType: 0
-      _couditionList: []
-    _treeData:
-      _treeType: 0
-      _executeList:
-      - _treeExecuteType: 0
-        _condition:
-          _conditionType: 0
-          _couditionList: []
-        _action:
-          _actionList:
-          - rid: 3921785787633369088
-  - _mastarCodition:
-      _conditionType: 0
-      _couditionList:
-      - rid: 3921785787633369091
-    _treeData:
-      _treeType: 0
-      _executeList:
-      - _treeExecuteType: 1
-        _condition:
-          _conditionType: 0
-          _couditionList: []
-        _action:
-          _actionList:
-          - rid: 3921785787633369092
-          - rid: 3921785787633369095
-  - _mastarCodition:
-      _conditionType: 0
-      _couditionList:
-      - rid: 3921785787633369089
-    _treeData:
-      _treeType: 0
-      _executeList:
-      - _treeExecuteType: 0
-        _condition:
-          _conditionType: 0
-          _couditionList: []
-        _action:
-          _actionList:
-          - rid: 3921785787633369090
-  references:
-    version: 2
-    RefIds:
-    - rid: 3921785787633369088
-      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
-    - rid: 3921785787633369089
-      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _findDistance: 10
-    - rid: 3921785787633369090
-      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
-    - rid: 3921785787633369091
-      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _findDistance: 2
-    - rid: 3921785787633369092
-      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
-    - rid: 3921785787633369095
-      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
-      data:
-        _rotateSpeed: 200
 --- !u!114 &1689373445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +243,86 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1689373447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689373439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b039cb51975f2d4aafa800e2fa3fc96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: 
+  _runUpdate: 1
+  _offset: {fileID: 0}
+  _limitConditionalCount: 0
+  _treeDataList:
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList: []
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785790389026816
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 3921785790389026817
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785790389026821
+          - rid: 3921785790389026818
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 3921785790389026819
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785790389026820
+  references:
+    version: 2
+    RefIds:
+    - rid: 3921785790389026816
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+    - rid: 3921785790389026817
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _findDistance: 2
+    - rid: 3921785790389026818
+      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _rotateSpeed: 200
+    - rid: 3921785790389026819
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _findDistance: 7
+    - rid: 3921785790389026820
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+    - rid: 3921785790389026821
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
 --- !u!1 &1728745360
 GameObject:
   m_ObjectHideFlags: 0

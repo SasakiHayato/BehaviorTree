@@ -16,7 +16,7 @@ public class GameUser : MonoBehaviour
     {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-
+        
         _rb.velocity = new Vector2(x, y).normalized * _speed;
     }
 }
