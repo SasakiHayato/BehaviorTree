@@ -13,12 +13,16 @@ namespace BehaviourTree.Edit
 
         List<TreeDataBase> _dataList;
 
+        public static SerializedProperty _property;
+
         private void OnEnable()
         {
             BehaviourTreeUser user = target as BehaviourTreeUser;
 
             _userName = user.name;
             _dataList = user.TreeDataBaseList;
+
+            _property = serializedObject.FindProperty("_treeDataList");
         }
 
         public override void OnInspectorGUI()
