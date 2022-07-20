@@ -12,9 +12,13 @@ namespace BehaviourTree.Edit
 {
     public class ConditionalNode : BaseNode
     {
+        List<VisualElement> _conditionList;
+
         public ConditionalNode() : base(true, true)
         {
             title = "Condition";
+
+            _conditionList = new List<VisualElement>();
 
             mainContainer.Add(SetPopup());
             mainContainer.Add(SetConditionCount());
@@ -41,6 +45,7 @@ namespace BehaviourTree.Edit
 
             field.RegisterCallback<ChangeEvent<int>>(e =>
             {
+                ResetConditionField();
                 CreateConditionField(e.newValue);
             });
 
@@ -51,8 +56,21 @@ namespace BehaviourTree.Edit
         {
             for (int i = 0; i < createConut; i++)
             {
-                mainContainer.Add(SetCondition());
+                VisualElement visual = SetCondition();
+                _conditionList.Add(visual);
+                mainContainer.Add(visual);
             }
+        }
+
+        void ResetConditionField()
+        {
+            if (_conditionList.Count <= 0)
+            {
+                return;
+            }
+
+            _conditionList.ForEach(c => mainContainer.Remove(c));
+            _conditionList = new List<VisualElement>();
         }
 
         VisualElement SetCondition()
@@ -64,11 +82,6 @@ namespace BehaviourTree.Edit
                 .ToList();
 
             PopupField<Type> field = new PopupField<Type>("Execute", list, 0);
-
-            field.RegisterCallback<ChangeEvent<Type>>(e =>
-            { 
-                
-            });
 
             return field;
         }

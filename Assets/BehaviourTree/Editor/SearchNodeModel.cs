@@ -8,9 +8,9 @@ namespace BehaviourTree.Edit
 {
     public class SearchNodeModel : ScriptableObject, ISearchWindowProvider
     {
-        TreeGraphView _view;
+        GraphView _view;
 
-        internal void Initialize(TreeGraphView view)
+        internal void Initialize(GraphView view)
         {
             _view = view;
         }
