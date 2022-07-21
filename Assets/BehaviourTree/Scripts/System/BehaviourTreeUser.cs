@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using BehaviourTree.Data;
+using BehaviourTree.IO;
 
 namespace BehaviourTree
 {
@@ -11,7 +12,7 @@ namespace BehaviourTree
     /// </summary>
     public class BehaviourTreeUser : MonoBehaviour
     {
-        [SerializeField] string _path;
+        [SerializeField] string _userPath;
         [SerializeField] bool _runUpdate = true;
         [SerializeField] Transform _offset;
         [SerializeField] int _limitConditionalCount;
@@ -21,6 +22,8 @@ namespace BehaviourTree
 
         TreeModel _treeModel;
         ModelData ModelData => _treeModel.ModelData;
+
+        BehaviourTreeUserData _userData;
 
         /// <summary>
         /// 任意のタイミングでTreeModelを呼び出す
@@ -49,19 +52,25 @@ namespace BehaviourTree
                 offset = transform;
             }
 
-            if (_path == "")
+            if (_userPath == "")
             {
-                _path = BehaviourTreeMasterData.CreateUserPath();
-                Debug.LogWarning($"{gameObject.name} has not UserPath. So Create it. PathName is => {_path}.");
+                _userPath = BehaviourTreeMasterData.CreateUserPath();
+                Debug.LogWarning($"{gameObject.name} has not UserPath. So Create it. PathName is => {_userPath}.");
             }
 
             UserID = BehaviourTreeMasterData.CreateUserID();
 
-            BehaviourTreeMasterData.Instance.CreateUser(UserID, _path, this, offset);
+            BehaviourTreeMasterData.Instance.CreateUser(UserID, _userPath, this, offset);
 
-            BehaviourTreeMasterData.Instance
-                .FindUserData(UserID)
-                .SetLimitConditionalCount(_limitConditionalCount);
+            string ioPath;
+
+            BehaviourTreeIO.CreateFile(_userPath, out ioPath);
+
+            BehaviourTreeUserData userData = BehaviourTreeMasterData.Instance.FindUserData(UserID);
+            userData.SetLimitConditionalCount(_limitConditionalCount);
+            userData.SetIOPath(ioPath);
+
+            _userData = userData;
         }
 
         void SetModelData()
@@ -106,6 +115,8 @@ namespace BehaviourTree
             {
                 Run();
             }
+
+            Outputter.SetLog(_userData, "AAAA");
         }
 
         void Run()

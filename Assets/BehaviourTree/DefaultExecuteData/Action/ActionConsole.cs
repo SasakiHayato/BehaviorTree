@@ -16,7 +16,7 @@ public class ActionConsole : BehaviourAction
         BehaviourTreeUser treeUser = user.GetComponent<BehaviourTreeUser>();
         _userData = BehaviourTreeMasterData.Instance.FindUserData(treeUser.UserID);
 
-        Debug.Log($"SetUpAction. UserName {_userData.Path}");
+        Debug.Log($"SetUpAction. UserName {_userData.UserPath}");
     }
 
     protected override bool Execute()
@@ -27,6 +27,6 @@ public class ActionConsole : BehaviourAction
 
     protected override void Initialize()
     {
-        Debug.Log($"ActionInit. User_{_userData.Path}");
+        Debug.Log($"ActionInit. User_{_userData.UserPath}");
     }
 }

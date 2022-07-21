@@ -19,7 +19,7 @@ namespace BehaviourTree.Data
         int _pathID;
         int _userID;
 
-        const string UserPath = "BehaviorUser_No.";
+        const string UserPath = "BehaviourUser_No.";
 
         public static string CreateUserPath()
         {
@@ -62,7 +62,7 @@ namespace BehaviourTree.Data
         {
             try
             {
-                return _userDic.First(u => u.Value.Path == path).Value;
+                return _userDic.First(u => u.Value.UserPath == path).Value;
             }
             catch (Exception)
             {
