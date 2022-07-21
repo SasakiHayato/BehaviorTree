@@ -1,5 +1,8 @@
 #if UNITY_EDITOR
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 
 namespace BehaviourTree.IO
@@ -16,6 +19,19 @@ namespace BehaviourTree.IO
             stream.Dispose();
 
             createPath = path;
+        }
+
+        public static void DeleteFile()
+        {
+            List<Type> types = new List<Type>();
+
+            types = AppDomain.CurrentDomain
+                .GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(w => !w.IsClass && !w.IsAbstract)
+                .ToList();
+            
+            types.ForEach(t => UnityEngine.Debug.Log(t.Name));
         }
     }
 }

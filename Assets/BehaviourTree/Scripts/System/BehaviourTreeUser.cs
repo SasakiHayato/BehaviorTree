@@ -23,8 +23,6 @@ namespace BehaviourTree
         TreeModel _treeModel;
         ModelData ModelData => _treeModel.ModelData;
 
-        BehaviourTreeUserData _userData;
-
         /// <summary>
         /// 任意のタイミングでTreeModelを呼び出す
         /// </summary>
@@ -50,6 +48,7 @@ namespace BehaviourTree
             if (offset == null)
             {
                 offset = transform;
+                _offset = transform;
             }
 
             if (_userPath == "")
@@ -69,8 +68,6 @@ namespace BehaviourTree
             BehaviourTreeUserData userData = BehaviourTreeMasterData.Instance.FindUserData(UserID);
             userData.SetLimitConditionalCount(_limitConditionalCount);
             userData.SetIOPath(ioPath);
-
-            _userData = userData;
         }
 
         void SetModelData()
@@ -115,8 +112,6 @@ namespace BehaviourTree
             {
                 Run();
             }
-
-            Outputter.SetLog(_userData, "AAAA");
         }
 
         void Run()
