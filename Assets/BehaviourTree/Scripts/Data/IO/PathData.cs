@@ -1,5 +1,9 @@
-namespace BehaviourTree.Data
+namespace BehaviourTree.Data.Json
 {
+    /// <summary>
+    /// 各ユーザーのPathData
+    /// </summary>
+
     [System.Serializable]
     public class PathData
     {

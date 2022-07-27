@@ -1,13 +1,17 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviourTree.Data;
+using BehaviourTree.Data.Json;
 
 namespace BehaviourTree.IO
 {
+    /// <summary>
+    /// Json‚ÆBehaviourTree‚Ì’‡‰îƒNƒ‰ƒX
+    /// </summary>
+
     public class BehaviourTreeJsonMeditor
     {
-        const string JsonPath = "Assets/BehaviourTree/UserPath.json";
+        const string JsonPath = "Assets/BehaviourTree/Json/UserPath.json";
 
         public IOPathModel Read()
         {

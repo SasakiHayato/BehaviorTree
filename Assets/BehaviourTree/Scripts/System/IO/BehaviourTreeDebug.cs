@@ -6,6 +6,10 @@ using BehaviourTree.Data;
 
 namespace BehaviourTree.IO
 {
+    /// <summary>
+    /// TextAsset—p‚ÌLogİ’èƒNƒ‰ƒX
+    /// </summary>
+
     public class BehaviourTreeDebug
     {
         public static void SetLog(BehaviourTreeUserData userData, string log)

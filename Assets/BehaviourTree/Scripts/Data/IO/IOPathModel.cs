@@ -1,5 +1,9 @@
-namespace BehaviourTree.Data
+namespace BehaviourTree.Data.Json
 {
+    /// <summary>
+    /// IOPathのデータクラス
+    /// </summary>
+
     [System.Serializable]
     public class IOPathModel
     {

@@ -3,10 +3,14 @@
 using UnityEditor;
 using System.Collections.Generic;
 using System.IO;
-using BehaviourTree.Data;
+using BehaviourTree.Data.Json;
 
 namespace BehaviourTree.IO
 {
+    /// <summary>
+    /// BehaviourTree‚ÌIOŠÇ—ƒNƒ‰ƒX
+    /// </summary>
+
     public static class BehaviourTreeIO
     {
         static BehaviourTreeJsonMeditor _jsonMeditor;
