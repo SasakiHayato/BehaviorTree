@@ -9,29 +9,32 @@ namespace BehaviourTree.IO
 {
     public static class BehaviourTreeIO
     {
-        const string FilePath = "Assets/BehaviourTree/Log/";
+        static BehaviourTreeJsonMeditor _jsonMeditor;
+        static List<string> _pathList;
+
+        const string LogFilePath = "Assets/BehaviourTree/Log/";
+
+        public static void Initialize()
+        {
+            _pathList = new List<string>();
+            _jsonMeditor = new BehaviourTreeJsonMeditor();
+        }
 
         public static void CreateFile(string userPath, out string createPath)
         {
-            string path = Path.Combine(FilePath, $"{userPath}_Log.txt");
+            string path = Path.Combine(LogFilePath, $"{userPath}_Log.txt");
             StreamWriter stream = File.CreateText(path);
 
             stream.Dispose();
 
             createPath = path;
+
+            _pathList.Add(path);
         }
 
-        public static void DeleteFile()
+        public static void Update()
         {
-            List<Type> types = new List<Type>();
-
-            types = AppDomain.CurrentDomain
-                .GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(w => !w.IsClass && !w.IsAbstract)
-                .ToList();
-            
-            types.ForEach(t => UnityEngine.Debug.Log(t.Name));
+            _jsonMeditor.Write(_pathList);
         }
     }
 }

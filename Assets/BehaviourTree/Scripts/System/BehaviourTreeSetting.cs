@@ -4,15 +4,16 @@ using BehaviourTree.IO;
 
 namespace BehaviourTree
 {
-    public class BehaviourTreeManager : MonoBehaviour
+    public class BehaviourTreeSetting : MonoBehaviour
     {
         void Awake()
         {
-            BehaviourTreeIO.DeleteFile();
+            BehaviourTreeIO.Initialize();
         }
 
         void OnDestroy()
         {
+            BehaviourTreeIO.Update();
             BehaviourTreeMasterData.Dispose();
         }
     }
