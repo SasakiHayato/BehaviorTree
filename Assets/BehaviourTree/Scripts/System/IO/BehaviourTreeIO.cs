@@ -1,5 +1,6 @@
 #if UNITY_EDITOR
 
+using UnityEditor;
 using System.Collections.Generic;
 using System.IO;
 using BehaviourTree.Data;
@@ -19,11 +20,10 @@ namespace BehaviourTree.IO
             _jsonMeditor = new BehaviourTreeJsonMeditor();
 
             IOPathModel model = _jsonMeditor.Read();
+            DeleteFile(model);
 
-            if (model.DataArray.Length > 0)
-            {
-                DeleteFile(model);
-            }
+            List<string> list = new List<string>();
+            _jsonMeditor.Write(list);
         }
 
         public static void CreateFile(string userPath, out string createPath)
@@ -40,12 +40,14 @@ namespace BehaviourTree.IO
 
         static void DeleteFile(IOPathModel model)
         {
+            FileUtil.DeleteFileOrDirectory("Assets/AAAA.meta");
             
+            //Directory.CreateDirectory();
         }
 
         public static void Update()
         {
-            _jsonMeditor.Write(_pathList);
+            //_jsonMeditor.Write(_pathList);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace BehaviourTree.IO
 {
     public class BehaviourTreeJsonMeditor
     {
-        const string JsonPath = "Assets/BehaviourTree/Log/UserPath.json";
+        const string JsonPath = "Assets/BehaviourTree/UserPath.json";
 
         public IOPathModel Read()
         {
@@ -24,7 +24,7 @@ namespace BehaviourTree.IO
             IOPathModel model = CreateModel(list);
             string json = JsonUtility.ToJson(model);
 
-            StreamWriter writer = new StreamWriter(JsonPath);
+            StreamWriter writer = new StreamWriter(JsonPath, false);
             writer.WriteLine(json);
             writer.Flush();
             writer.Close();
