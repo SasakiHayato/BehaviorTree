@@ -14,7 +14,16 @@ namespace BehaviourTree.IO
             StreamReader reader = new StreamReader(JsonPath);
             string read = reader.ReadToEnd();
 
-            IOPathModel model = JsonUtility.FromJson<IOPathModel>(read);
+            IOPathModel model;
+
+            try
+            {
+                model = JsonUtility.FromJson<IOPathModel>(read);
+            }
+            catch (System.Exception)
+            {
+                model = null;
+            }
 
             return model;
         }

@@ -20,10 +20,11 @@ namespace BehaviourTree.IO
             _jsonMeditor = new BehaviourTreeJsonMeditor();
 
             IOPathModel model = _jsonMeditor.Read();
-            DeleteFile(model);
 
-            List<string> list = new List<string>();
-            _jsonMeditor.Write(list);
+            if (model != null)
+            {
+                DeleteFile(model);
+            }
         }
 
         public static void CreateFile(string userPath, out string createPath)
@@ -40,14 +41,16 @@ namespace BehaviourTree.IO
 
         static void DeleteFile(IOPathModel model)
         {
-            FileUtil.DeleteFileOrDirectory("Assets/AAAA.meta");
-            
-            //Directory.CreateDirectory();
+            foreach (PathData data in model.DataArray)
+            {
+                FileUtil.DeleteFileOrDirectory(data.Path);
+                FileUtil.DeleteFileOrDirectory(data.Path + ".meta");
+            }
         }
 
         public static void Update()
         {
-            //_jsonMeditor.Write(_pathList);
+            _jsonMeditor.Write(_pathList);
         }
     }
 }
