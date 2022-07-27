@@ -1,4 +1,3 @@
-using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +8,16 @@ namespace BehaviourTree.IO
     public class BehaviourTreeJsonMeditor
     {
         const string JsonPath = "Assets/BehaviourTree/Log/UserPath.json";
+
+        public IOPathModel Read()
+        {
+            StreamReader reader = new StreamReader(JsonPath);
+            string read = reader.ReadToEnd();
+
+            IOPathModel model = JsonUtility.FromJson<IOPathModel>(read);
+
+            return model;
+        }
 
         public void Write(List<string> list)
         {

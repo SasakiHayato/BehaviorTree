@@ -1,9 +1,8 @@
 #if UNITY_EDITOR
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
+using BehaviourTree.Data;
 
 namespace BehaviourTree.IO
 {
@@ -18,6 +17,13 @@ namespace BehaviourTree.IO
         {
             _pathList = new List<string>();
             _jsonMeditor = new BehaviourTreeJsonMeditor();
+
+            IOPathModel model = _jsonMeditor.Read();
+
+            if (model.DataArray.Length > 0)
+            {
+                DeleteFile(model);
+            }
         }
 
         public static void CreateFile(string userPath, out string createPath)
@@ -30,6 +36,11 @@ namespace BehaviourTree.IO
             createPath = path;
 
             _pathList.Add(path);
+        }
+
+        static void DeleteFile(IOPathModel model)
+        {
+            
         }
 
         public static void Update()
