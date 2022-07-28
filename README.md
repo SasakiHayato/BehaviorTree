@@ -4,6 +4,6 @@
 <p>使用について</p>
 </a>
 
-<a href = "">
+<a href = "https://github.com/SasakiHayato/BehaviorTreeNode/releases/tag/test">
 <p>package</p>
 </a>
