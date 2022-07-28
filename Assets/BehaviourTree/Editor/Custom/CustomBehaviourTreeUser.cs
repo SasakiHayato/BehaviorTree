@@ -37,6 +37,7 @@ namespace BehaviourTree.Edit
             TreeWindow window = CreateInstance<TreeWindow>();
             window.Show();
             window.SetCloseAction(() => _isOpen = false);
+
             window.titleContent = new GUIContent($"{_userName}_TreeWindow");
         }
     }
