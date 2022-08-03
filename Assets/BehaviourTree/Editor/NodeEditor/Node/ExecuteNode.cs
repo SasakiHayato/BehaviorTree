@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace BehaviourTree.Edit
@@ -12,26 +13,18 @@ namespace BehaviourTree.Edit
         VisualElement OpenWindow()
         {
             Button button = new Button();
-
             button.name = "Open";
 
-            TextField text = new TextField();
-
-            string a;
-
-            TextField field = new TextField();
-
-            field.RegisterCallback<ChangeEvent<string>>(e =>
-            {
-                _title = e.newValue;
-            });
-
-            text.RegisterValueChangedCallback<ChangeEvent<string>>(e =>
-            {
-                a = e.newValue;
-            });
+            button.clicked += () => CreateWindow();
 
             return button;
+        }
+
+        void CreateWindow()
+        {
+            ExecuteWindow window = ScriptableObject.CreateInstance<ExecuteWindow>();
+            window.Show();
+            window.titleContent = new GUIContent("_ExecuteWindow");
         }
 
         protected override string SetTitle()
